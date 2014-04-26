@@ -1,43 +1,57 @@
 <?php
-$dbname="devt345";
-$dbhost="localhost";
-$dbuser="root";
-$dbpass="basic";
-mysql_connect($dbhost,$dbuser,$dbpass);
-mysql_select_db($dbname);
+/**
+ * convert a CSV file of certified users into SQL statements
+ */
 
 $fp = fopen("certs.csv", "r");
 
+$userId = 1;
+$storagePid=774;
+
 while( !feof($fp) ) {
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!-_?/()&%$§<>#+';
-    $randomString = '';
-    $length = 10;
-    for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, strlen($characters) - 1)];
-    }
-
     $zeile = fgetcsv( $fp  , NULL , ";"  );
+	if(count($zeile) < 4) {
+		continue;
+	}
 
-    $query = "INSERT INTO fe_users (pid,username,password,usergroup,first_name,last_name,email,country,certificates,tx_extbase_type,public_email_address) VALUES ";
-    $query .= " ('774','#".$zeile[2].".".$zeile[1]."', '".$randomString."','30','".$zeile[2]."','".$zeile[1]."','".$zeile[0]."','".$zeile[3]."','1','Tx_Certifications_FeUsers','0'); ";
-    $query = substr($query, 0, -1);
-    echo $query.'<br />-----<br/>';
-    mysql_query($query) or die(mysql_error());
+    $query = sprintf(
+        'INSERT INTO tx_certifications_domain_model_user(uid,pid,first_name,last_name,email,public_email_address,country,certificates)'.
+        'VALUES(%d, %d, "%s", "%s", "%s", %d, "%s", %d);',
+        $userId, //uid
+        $storagePid, //pid
+	    addslashes(trim($zeile[2])), // last_name
+	    addslashes(trim($zeile[1])), // first_name
+	    addslashes(trim($zeile[0])), // email
+        0, //public_email_address
+	    addslashes(trim($zeile[3])), // country
+        1 //certificates
+    );
+	echo $query."\n";
 
-    $expirationDate = date("U",strtotime($zeile[4]));
-    $expirationDate = $expirationDate + (3 * 31556926);
-    $certificationDate = date("U",strtotime($zeile[4]));
+
+	$certificationDate = date("U",strtotime($zeile[4]));
+    $expirationDate = strtotime('+3 years', $certificationDate);
     if ($zeile[6] == 'Version 4.x') {
-        $expired = '1';
+        $expired = TRUE;
     } else {
-        $expired = '0';
+        $expired = FALSE;
     }
-    $mmQuery = "INSERT INTO tx_certifications_domain_model_certificate (pid,feusers,certification_date,allow_listing,expired,certificate_type,expiration_date) VALUES";
-    $mmQuery .= " ('774','".mysql_insert_id()."','".$certificationDate."', '1','".$expired."','1','".$expirationDate."');";
-    $mmQuery = substr($mmQuery, 0, -1);
-    echo $mmQuery.'<br />=====<br />';
-    mysql_query($mmQuery) or die(mysql_error());
 
+    $query = sprintf(
+        'INSERT INTO tx_certifications_domain_model_certificate (pid,user,certification_date,allow_listing,expired,certificate_type,expiration_date) '.
+        'VALUES(%d, %d, %d, %d, %d, %d, %d);',
+        $storagePid,        //pid
+        $userId,            //user
+        $certificationDate, //certification_date
+        1,                  //allow_listing
+	    (int)$expired,      // expired
+        1,                  // certificate_type
+        $expirationDate     // expiration_date
+    );
+
+	echo $query."\n";
+
+	$userId++;
 }
 
 fclose($fp);
