@@ -55,16 +55,29 @@ class Tx_Certifications_Controller_ListingController extends Tx_Extbase_MVC_Cont
             $sorto = 'desc';
         }
 
-        //ASCII => A-Z
-        if (is_null($sorting) || $sorting === 'asc') {
-            for ($i = 65;  $i <= 90; $i++) {
-                $feUserss[chr($i)] = $this->userRepository->findByFirstLetterOfLastName(chr($i));
-            }
-        } elseif ($sorting === 'desc') {
-            for ($i = 90;  $i >= 65; $i--) {
-                $feUserss[chr($i)] = $this->userRepository->findByFirstLetterOfLastName(chr($i));
-            }
-        }
+		/**
+		 * an array with the letters 'A' to 'Z' and '#' as keys and empty arrays as value
+		 * @var array
+		*/
+		$feUserss = array_combine(range('A', 'Z'), array_fill(0,26,array()));
+		if($sorting === 'desc') {
+			$feUserss = array_reverse($feUserss);
+		}
+		$feUserss['#'] = array();
+		// add all users according to the first letter of their last name
+		foreach($this->userRepository->findAll() as $user) {
+			/** @var Tx_Certifications_Domain_Model_User $user */
+			$firstLetter = strtoupper(substr($user->getLastName(), 0, 1));
+			if(array_key_exists($firstLetter, $feUserss)) {
+				$feUserss[$firstLetter][] = $user;
+			} else {
+				$feUserss['#'][] = $user;
+			}
+		}
+		if(empty($feUserss['#'])) {
+			unset($feUserss['#']);
+		}
+
         $this->view->assign('sort', $sort);
         $this->view->assign('sorto', $sorto);
  		$this->view->assign('feUserss', $feUserss);

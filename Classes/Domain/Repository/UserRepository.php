@@ -34,26 +34,16 @@
 class Tx_Certifications_Domain_Repository_UserRepository extends Tx_Extbase_Persistence_Repository {
 
     /**
-     * @param $letter
      * @return array|Tx_Extbase_Persistence_QueryResultInterface
      */
-    public function findByFirstLetterOfLastName($letter) {
-        $letter = strtoupper($letter);
+    public function findAll() {
         $query = $this->createQuery();
         $query->setOrderings(array(
             'last_name' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING,
             'first_name' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING,
             'country' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING
         ));
-
-        $and = array(
-            $query->like('last_name',$letter.'%')
-        );
-
-        $query->matching($query->logicalAnd($and));
-
         $return = $query->execute();
-
         return $return;
     }
 
