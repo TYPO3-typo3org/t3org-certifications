@@ -7,20 +7,19 @@
 	<data type="array">
 		<languageKey index="default" type="array">
             
-			<label index="tx_certifications_domain_model_feusers">Certification</label>
-			<label index="tx_certifications_domain_model_feusers.cert_reason">Reason for Certification</label>
-			<label index="tx_certifications_domain_model_feusers.public_email_address">Allow public e-mail address</label>
-			<label index="tx_certifications_domain_model_feusers.certificates">Certificates</label>
-            <label index="tx_certifications_domain_model_feusers.twitter">Twitter Username</label>
-            <label index="tx_certifications_domain_model_feusers.public_twitter">Allow public twitter username</label>
-            <label index="fe_users.tx_extbase_type.Tx_Certifications_FeUsers">Certificated Users</label>
+			<label index="tx_certifications_domain_model_user">Certificated User</label>
+			<label index="tx_certifications_domain_model_user.cert_reason">Reason for Certification</label>
+			<label index="tx_certifications_domain_model_user.public_email_address">Allow public e-mail address</label>
+			<label index="tx_certifications_domain_model_user.certificates">Certificates</label>
+            <label index="tx_certifications_domain_model_user.twitter">Twitter Username</label>
+            <label index="tx_certifications_domain_model_user.public_twitter">Allow public twitter username</label>
 
-            <label index="tx_certifications_domain_model_feusers.name">Name</label>
-            <label index="tx_certifications_domain_model_feusers.country">Country</label>
-            <label index="tx_certifications_domain_model_feusers.certificate">Certificate</label>
-            <label index="tx_certifications_domain_model_feusers.no_expiration">no expiration</label>
-            <label index="tx_certifications_domain_model_feusers.myCertificates">My Certificates</label>
-            <label index="tx_certifications_domain_model_feusers.contact">Contact</label>
+            <label index="tx_certifications_domain_model_user.name">Name</label>
+            <label index="tx_certifications_domain_model_user.country">Country</label>
+            <label index="tx_certifications_domain_model_user.certificate">Certificate</label>
+            <label index="tx_certifications_domain_model_user.no_expiration">no expiration</label>
+            <label index="tx_certifications_domain_model_user.myCertificates">My Certificates</label>
+            <label index="tx_certifications_domain_model_user.contact">Contact</label>
 
 			<label index="tx_certifications_domain_model_certificate">Certificate</label>
 			<label index="tx_certifications_domain_model_certificate.certification_date">Certification Date</label>

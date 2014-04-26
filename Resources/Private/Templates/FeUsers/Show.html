@@ -14,7 +14,6 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 <f:section name="main">
 
-<f:flashMessages />
     <h1 class="csc-firstHeader head">{feUsers.firstName} {feUsers.lastName}</h1>
 
     <f:if condition="{feUsers.image}">
@@ -27,23 +26,23 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
     <span class="country">{feUsers.country}</span>
     <div class="certificates">
-        <h3><f:translate key="tx_certifications_domain_model_feusers.myCertificates" /></h3>
+        <h3><f:translate key="tx_certifications_domain_model_user.myCertificates" /></h3>
         <ul>
             <f:for each="{feUsers.certificates}" as="certificate">
                 <f:if condition="{0:certificate.allowListing} == {0:'1'}">
                     <li>{certificate.certificateType.title}
-                        (<f:if condition="{certificate.expired}"><f:then><f:translate key="tx_certifications_domain_model_feusers.no_expiration" /></f:then><f:else><f:format.date format="d.m.Y">{certificate.certificationDate}</f:format.date> - <f:format.date format="d.m.Y">{certificate.expirationDate}</f:format.date></f:else></f:if>)
+                        (<f:if condition="{certificate.expired}"><f:then><f:translate key="tx_certifications_domain_model_user.no_expiration" /></f:then><f:else><f:format.date format="d.m.Y">{certificate.certificationDate}</f:format.date> - <f:format.date format="d.m.Y">{certificate.expirationDate}</f:format.date></f:else></f:if>)
                     </li>
                 </f:if>
             </f:for>
         </ul>
     </div>
 
-    <f:if condition="{0:feUsers.publicEmailAddress} == {0:'1'}">
+    <f:if condition="{feUsers.publicEmailAddress}">
         <div class="contact">
-            <h3><f:translate key="tx_certifications_domain_model_feusers.contact" /></h3>
+            <h3><f:translate key="tx_certifications_domain_model_user.contact" /></h3>
             <p><f:link.email email="{feUsers.email}" /></p>
-            <f:if condition="{0:feUsers.publicTwitter} == {0:'1'}">
+            <f:if condition="{feUsers.publicTwitter}">
                 <p><f:link.external uri="https://www.twitter.com/{feUsers.twitter}" target="_blank">@{feUsers.twitter}</f:link.external></p>
             </f:if>
         </div>

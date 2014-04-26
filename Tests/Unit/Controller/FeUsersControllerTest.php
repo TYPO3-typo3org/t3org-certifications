@@ -38,12 +38,12 @@
  */
 class Tx_Certifications_Controller_FeUsersControllerTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
 	/**
-	 * @var Tx_Certifications_Domain_Model_FeUsers
+	 * @var Tx_Certifications_Domain_Model_User
 	 */
 	protected $fixture;
 
 	public function setUp() {
-		$this->fixture = new Tx_Certifications_Domain_Model_FeUsers();
+		$this->fixture = new Tx_Certifications_Domain_Model_User();
 	}
 
 	public function tearDown() {

@@ -25,7 +25,7 @@
  ***************************************************************/
 
 /**
- * Test case for class Tx_Certifications_Domain_Model_FeUsers.
+ * Test case for class Tx_Certifications_Domain_Model_User.
  *
  * @version $Id$
  * @copyright Copyright belongs to the respective authors
@@ -36,14 +36,14 @@
  *
  * @author Ole Hartwig <o.hartwig@web-vision.de>
  */
-class Tx_Certifications_Domain_Model_FeUsersTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
+class Tx_Certifications_Domain_Model_UserTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
 	/**
-	 * @var Tx_Certifications_Domain_Model_FeUsers
+	 * @var Tx_Certifications_Domain_Model_User
 	 */
 	protected $fixture;
 
 	public function setUp() {
-		$this->fixture = new Tx_Certifications_Domain_Model_FeUsers();
+		$this->fixture = new Tx_Certifications_Domain_Model_User();
 	}
 
 	public function tearDown() {

@@ -31,7 +31,28 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Tx_Certifications_Domain_Model_FeUsers extends Tx_Extbase_Domain_Model_FrontendUser {
+class Tx_Certifications_Domain_Model_User extends Tx_Extbase_Domain_Model_FrontendUser {
+
+
+	/**
+	 * @var string
+	 */
+	protected $firstName;
+
+	/**
+	 * @var string
+	 */
+	protected $middleName;
+
+	/**
+	 * @var string
+	 */
+	protected $lastName;
+
+	/**
+	 * @var string
+	 */
+	protected $country = '';
 
 	/**
 	 * certReason
@@ -68,6 +89,63 @@ class Tx_Certifications_Domain_Model_FeUsers extends Tx_Extbase_Domain_Model_Fro
      * @var boolean
      */
     protected $publicTwitter;
+
+	/**
+	 * @param string $country
+	 */
+	public function setCountry($country) {
+		$this->country = $country;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getCountry() {
+		return $this->country;
+	}
+
+	/**
+	 * @param string $firstName
+	 */
+	public function setFirstName($firstName) {
+		$this->firstName = $firstName;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getFirstName() {
+		return $this->firstName;
+	}
+
+	/**
+	 * @param string $lastName
+	 */
+	public function setLastName($lastName) {
+		$this->lastName = $lastName;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getLastName() {
+		return $this->lastName;
+	}
+
+	/**
+	 * @param string $middleName
+	 */
+	public function setMiddleName($middleName) {
+		$this->middleName = $middleName;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getMiddleName() {
+		return $this->middleName;
+	}
+
 
 	/**
 	 * __construct
@@ -178,6 +256,36 @@ class Tx_Certifications_Domain_Model_FeUsers extends Tx_Extbase_Domain_Model_Fro
 	public function isPublicEmailAddress() {
 		return $this->getPublicEmailAddress();
 	}
+
+	/**
+	 * @param boolean $publicTwitter
+	 */
+	public function setPublicTwitter($publicTwitter) {
+		$this->publicTwitter = $publicTwitter;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function getPublicTwitter() {
+		return $this->publicTwitter;
+	}
+
+	/**
+	 * @param string $twitter
+	 */
+	public function setTwitter($twitter) {
+		$this->twitter = $twitter;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getTwitter() {
+		return $this->twitter;
+	}
+
+
 
 }
 ?>

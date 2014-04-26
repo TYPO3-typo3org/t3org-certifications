@@ -148,7 +148,7 @@ $TCA['tx_certifications_domain_model_certificate'] = array(
                 )
 			),
 		),
-		'feusers' => array(
+		'user' => array(
 			'config' => array(
 				'type' => 'passthrough',
 			),

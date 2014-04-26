@@ -36,9 +36,9 @@ class Tx_Certifications_Controller_FeUsersController extends Tx_Extbase_MVC_Cont
 	/**
 	 * feUsersRepository
 	 *
-	 * @var Tx_Certifications_Domain_Repository_FeUsersRepository
+	 * @var Tx_Certifications_Domain_Repository_UserRepository
 	 */
-	protected $feUsersRepository;
+	protected $userRepository;
 
     /**
      * action list
@@ -58,11 +58,11 @@ class Tx_Certifications_Controller_FeUsersController extends Tx_Extbase_MVC_Cont
         //ASCII => A-Z
         if (is_null($sorting) || $sorting === 'asc') {
             for ($i = 65;  $i <= 90; $i++) {
-                $feUserss[chr($i)] = $this->feUsersRepository->findByFirstLetterOfLastName(chr($i));
+                $feUserss[chr($i)] = $this->userRepository->findByFirstLetterOfLastName(chr($i));
             }
         } elseif ($sorting === 'desc') {
             for ($i = 90;  $i >= 65; $i--) {
-                $feUserss[chr($i)] = $this->feUsersRepository->findByFirstLetterOfLastName(chr($i));
+                $feUserss[chr($i)] = $this->userRepository->findByFirstLetterOfLastName(chr($i));
             }
         }
         $this->view->assign('sort', $sort);
@@ -83,7 +83,7 @@ class Tx_Certifications_Controller_FeUsersController extends Tx_Extbase_MVC_Cont
             $sorto = 'desc';
         }
 
-        $feUserss = $this->feUsersRepository->findBySortBy($sortby,$sorting);
+        $feUserss = $this->userRepository->findBySortBy($sortby,$sorting);
 
         $this->view->assign('sort', $sort);
         $this->view->assign('sorto', $sorto);
@@ -93,21 +93,21 @@ class Tx_Certifications_Controller_FeUsersController extends Tx_Extbase_MVC_Cont
 	/**
 	 * action show
 	 *
-	 * @param Tx_Certifications_Domain_Model_FeUsers $feUsers
+	 * @param Tx_Certifications_Domain_Model_User $user
 	 * @return void
 	 */
-	public function showAction(Tx_Certifications_Domain_Model_FeUsers $feUsers) {
-		$this->view->assign('feUsers', $feUsers);
+	public function showAction(Tx_Certifications_Domain_Model_User $user) {
+		$this->view->assign('feUsers', $user);
 	}
 
 	/**
 	 * injectFeUsersRepository
 	 *
-	 * @param Tx_Certifications_Domain_Repository_FeUsersRepository $feUsersRepository
+	 * @param Tx_Certifications_Domain_Repository_UserRepository $userRepository
 	 * @return void
 	 */
-	public function injectFeUsersRepository(Tx_Certifications_Domain_Repository_FeUsersRepository $feUsersRepository) {
-		$this->feUsersRepository = $feUsersRepository;
+	public function injectFeUsersRepository(Tx_Certifications_Domain_Repository_UserRepository $userRepository) {
+		$this->userRepository = $userRepository;
 	}
 
 }

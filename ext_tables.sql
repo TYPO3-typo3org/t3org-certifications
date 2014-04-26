@@ -1,7 +1,23 @@
 #
-# Table structure for table 'fe_users'
+# Table structure for table 'tx_certifications_domain_model_user'
 #
-CREATE TABLE fe_users (
+CREATE TABLE tx_certifications_domain_model_user (
+	uid int(11) unsigned NOT NULL auto_increment,
+	pid int(11) unsigned DEFAULT '0' NOT NULL,
+
+	crdate int(11) unsigned DEFAULT '0' NOT NULL,
+	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
+	cruser_id int(11) unsigned DEFAULT '0' NOT NULL,
+	disable tinyint(4) unsigned DEFAULT '0' NOT NULL,
+	starttime int(11) unsigned DEFAULT '0' NOT NULL,
+	endtime int(11) unsigned DEFAULT '0' NOT NULL,
+	deleted tinyint(4) unsigned DEFAULT '0' NOT NULL,
+
+	first_name varchar(50) DEFAULT '' NOT NULL,
+	middle_name varchar(50) DEFAULT '' NOT NULL,
+	last_name varchar(50) DEFAULT '' NOT NULL,
+	country varchar(40) DEFAULT '' NOT NULL,
+	email varchar(80) DEFAULT '' NOT NULL,
 
 	cert_reason varchar(255) DEFAULT '' NOT NULL,
 	public_email_address tinyint(1) unsigned DEFAULT '0' NOT NULL,
@@ -9,7 +25,7 @@ CREATE TABLE fe_users (
 	twitter varchar(255) DEFAULT '' NOT NULL,
 	public_twitter tinyint(1) unsigned DEFAULT '0' NOT NULL,
 
-	tx_extbase_type varchar(255) DEFAULT '' NOT NULL,
+	PRIMARY KEY (uid),
 
 );
 

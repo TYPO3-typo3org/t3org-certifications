@@ -37,19 +37,19 @@ Otherwise your changes will be overwritten the next time you save the extension 
                     <table>
                         <thead>
                         <tr>
-                            <th><f:link.action action="list" arguments="{sorting : 'desc'}"><f:translate key="tx_certifications_domain_model_feusers.name" /></f:link.action></th>
-                            <th><f:link.action action="listSorted" arguments="{sortby : 'country', sorting : 'asc'}"><f:translate key="tx_certifications_domain_model_feusers.country" /></f:link.action></th>
-                            <th><f:link.action action="listSorted" arguments="{sortby : 'certificate', sorting : 'asc'}"><f:translate key="tx_certifications_domain_model_feusers.certificate" /></f:link.action></th>
+                            <th><f:link.action action="list" arguments="{sorting : 'desc'}"><f:translate key="tx_certifications_domain_model_user.name" /></f:link.action></th>
+                            <th><f:link.action action="listSorted" arguments="{sortby : 'country', sorting : 'asc'}"><f:translate key="tx_certifications_domain_model_user.country" /></f:link.action></th>
+                            <th><f:link.action action="listSorted" arguments="{sortby : 'certificate', sorting : 'asc'}"><f:translate key="tx_certifications_domain_model_user.certificate" /></f:link.action></th>
                         </tr>
                         </thead>
                         <f:for each="{feUsers}" as="feUser">
                             <tr>
                                 <f:if condition="{settings.singlePid}">
                                     <f:then>
-                                        <td><h5><f:link.action action="show" pageUid="{settings.singlePid}" arguments="{feUsers : feUser}">{feUser.lastName}, {feUser.firstName}</f:link.action></h5></td>
+                                        <td><h5><f:link.action action="show" pageUid="{settings.singlePid}" arguments="{user : feUser}">{feUser.lastName}, {feUser.firstName}</f:link.action></h5></td>
                                     </f:then>
                                     <f:else>
-                                        <td><h5><f:link.action action="show" arguments="{feUsers : feUser}">{feUser.lastName}, {feUser.firstName}</f:link.action></h5></td>
+                                        <td><h5><f:link.action action="show" arguments="{user : feUser}">{feUser.lastName}, {feUser.firstName}</f:link.action></h5></td>
                                     </f:else>
                                 </f:if>
                                 <td>{feUser.country}</td>
@@ -58,7 +58,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
                                         <f:for each="{feUser.certificates}" as="certificate">
                                             <f:if condition="{0:certificate.allowListing} == {0:'1'}">
                                                 <li>{certificate.certificateType.title}
-                                                    (<f:if condition="{certificate.expired}"><f:then><f:translate key="tx_certifications_domain_model_feusers.no_expiration" /></f:then><f:else><f:format.date format="d.m.Y">{certificate.certificationDate}</f:format.date> - <f:format.date format="d.m.Y">{certificate.expirationDate}</f:format.date></f:else></f:if>)
+                                                    (<f:if condition="{certificate.expired}"><f:then><f:translate key="tx_certifications_domain_model_user.no_expiration" /></f:then><f:else><f:format.date format="d.m.Y">{certificate.certificationDate}</f:format.date> - <f:format.date format="d.m.Y">{certificate.expirationDate}</f:format.date></f:else></f:if>)
                                                 </li>
                                             </f:if>
                                         </f:for>

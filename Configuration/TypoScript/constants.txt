@@ -9,6 +9,6 @@ plugin.tx_certifications {
 	}
 	persistence {
 		# cat=plugin.tx_certifications//a; type=string; label=Default storage PID
-		storagePid =
+		storagePid = 774
 	}
 }
