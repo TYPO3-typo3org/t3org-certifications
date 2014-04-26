@@ -46,23 +46,23 @@ class Tx_Certifications_Controller_ListingController extends Tx_Extbase_MVC_Cont
      * @param string $sorting
      * @return void
      */
-    public function listAction($sorting = NULL) {
-        if ($sorting == NULL || $sorting == 'asc') {
-            $sort = 'desc';
-            $sorto = 'asc';
-        } else {
-            $sort = 'asc';
-            $sorto = 'desc';
-        }
+    public function listAction() {
+//        if ($sorting == NULL || $sorting == 'asc') {
+//            $sort = 'desc';
+//            $sorto = 'asc';
+//        } else {
+//            $sort = 'asc';
+//            $sorto = 'desc';
+//        }
 
 		/**
 		 * an array with the letters 'A' to 'Z' and '#' as keys and empty arrays as value
 		 * @var array
 		*/
 		$feUserss = array_combine(range('A', 'Z'), array_fill(0,26,array()));
-		if($sorting === 'desc') {
-			$feUserss = array_reverse($feUserss);
-		}
+//		if($sorting === 'desc') {
+//			$feUserss = array_reverse($feUserss);
+//		}
 		$feUserss['#'] = array();
 		// add all users according to the first letter of their last name
 		foreach($this->userRepository->findAll() as $user) {
@@ -78,8 +78,8 @@ class Tx_Certifications_Controller_ListingController extends Tx_Extbase_MVC_Cont
 			unset($feUserss['#']);
 		}
 
-        $this->view->assign('sort', $sort);
-        $this->view->assign('sorto', $sorto);
+//        $this->view->assign('sort', $sort);
+//        $this->view->assign('sorto', $sorto);
  		$this->view->assign('feUserss', $feUserss);
 	}
 
@@ -87,21 +87,21 @@ class Tx_Certifications_Controller_ListingController extends Tx_Extbase_MVC_Cont
      * @param string $sortby
      * @param string $sorting
      */
-    public function listSortedAction($sortby = NULL, $sorting = NULL) {
-        if ($sorting == NULL || $sorting == 'asc') {
-            $sort = 'desc';
-            $sorto = 'asc';
-        } else {
-            $sort = 'asc';
-            $sorto = 'desc';
-        }
-
-        $feUserss = $this->userRepository->findBySortBy($sortby,$sorting);
-
-        $this->view->assign('sort', $sort);
-        $this->view->assign('sorto', $sorto);
-        $this->view->assign('feUserss', $feUserss);
-    }
+//    public function listSortedAction($sortby = NULL, $sorting = NULL) {
+//        if ($sorting == NULL || $sorting == 'asc') {
+//            $sort = 'desc';
+//            $sorto = 'asc';
+//        } else {
+//            $sort = 'asc';
+//            $sorto = 'desc';
+//        }
+//
+//        $feUserss = $this->userRepository->findBySortBy($sortby,$sorting);
+//
+//        $this->view->assign('sort', $sort);
+//        $this->view->assign('sorto', $sorto);
+//        $this->view->assign('feUserss', $feUserss);
+//    }
 
 	/**
 	 * action show

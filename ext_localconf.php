@@ -7,12 +7,12 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	$_EXTKEY,
 	'Certlist',
 	array(
-		'Listing' => 'list, listSorted, show',
+		'Listing' => 'list, show',
 
 	),
 	// non-cacheable actions
 	array(
-		'Listing' => 'listSorted',
+		//'Listing' => 'listSorted',
 
 	)
 );
