@@ -18,11 +18,11 @@
                                 <items>
                                     <numIndex index="0">
                                         <numIndex index="0">List</numIndex>
-                                        <numIndex index="1">FeUsers->list;FeUsers->listSorted;FeUsers->show</numIndex>
+                                        <numIndex index="1">Listing->list;Listing->listSorted;Listing->show</numIndex>
                                     </numIndex>
                                     <numIndex index="1">
                                         <numIndex index="0">Detail</numIndex>
-                                        <numIndex index="1">FeUsers->show</numIndex>
+                                        <numIndex index="1">Listing->show</numIndex>
                                     </numIndex>
                                 </items>
                             </config>
