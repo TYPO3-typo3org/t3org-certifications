@@ -44,6 +44,7 @@ CREATE TABLE tx_certifications_domain_model_certificate (
 	allow_listing tinyint(1) unsigned DEFAULT '0' NOT NULL,
 	expired tinyint(1) unsigned DEFAULT '0' NOT NULL,
 	certificate_type int(11) unsigned DEFAULT '0',
+	user int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -112,14 +113,5 @@ CREATE TABLE tx_certifications_domain_model_certificatetype (
 	KEY parent (pid),
 	KEY t3ver_oid (t3ver_oid,t3ver_wsid),
 	KEY language (l10n_parent,sys_language_uid)
-
-);
-
-#
-# Table structure for table 'tx_certifications_domain_model_certificate'
-#
-CREATE TABLE tx_certifications_domain_model_certificate (
-
-	feusers  int(11) unsigned DEFAULT '0' NOT NULL,
 
 );
