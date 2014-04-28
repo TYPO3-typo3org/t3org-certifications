@@ -14,17 +14,17 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 <f:section name="main">
 
-    <h1 class="csc-firstHeader head">{feUsers.firstName} {feUsers.lastName}</h1>
+    <h1 class="csc-firstHeader cert-head">{feUsers.firstName} {feUsers.lastName}</h1>
 
     <f:if condition="{feUsers.image}">
-        <div class="user-image"><cert:GrayImage src="uploads/pics/{feUsers.image}" width="340m" alt="{feUsers.firstName} {feUsers.lastName}" />
+        <div class="cert-user-image"><cert:GrayImage src="uploads/pics/{feUsers.image}" width="340m" alt="{feUsers.firstName} {feUsers.lastName}" />
             <f:if condition="{feUsers.certReason}">
-                <span class="reason">"{feUsers.certReason}" <span class="name">{feUsers.firstName} {feUsers.lastName}</span></span>
+                <span class="cert-reason">"{feUsers.certReason}" <span class="cert-name">{feUsers.firstName} {feUsers.lastName}</span></span>
             </f:if>
         </div>
     </f:if>
 
-    <span class="country">{feUsers.country}</span>
+    <span class="cert-country">{feUsers.country}</span>
     <div class="certificates">
         <h3><f:translate key="tx_certifications_domain_model_user.myCertificates" /></h3>
         <ul>
@@ -39,7 +39,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
     </div>
 
     <f:if condition="{feUsers.publicEmailAddress}">
-        <div class="contact">
+        <div class="cert-contact">
             <h3><f:translate key="tx_certifications_domain_model_user.contact" /></h3>
             <p><f:link.email email="{feUsers.email}" /></p>
             <f:if condition="{feUsers.publicTwitter}">

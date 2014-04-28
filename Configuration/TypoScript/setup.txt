@@ -16,13 +16,13 @@ plugin.tx_certifications {
 plugin.tx_certifications._CSS_DEFAULT_STYLE (
     .tx_certifications { overflow: hidden; }
 
-    .tx_certifications .tabs {
+    .tx_certifications .cert-tabs {
         margin: 0 0 0 8px;
         overflow: hidden;
         padding: 0;
     }
 
-    .tx_certifications .tabs li {
+    .tx_certifications .cert-tabs li {
         background: none;
         border-color: #C8C8C8;
         border-style: solid;
@@ -36,9 +36,9 @@ plugin.tx_certifications._CSS_DEFAULT_STYLE (
         margin: 0;
     }
 
-    .tx_certifications .tabs li:first-child { border-width: 1px; }
+    .tx_certifications .cert-tabs li:first-child { border-width: 1px; }
 
-    .tx_certifications .tabs li a {
+    .tx_certifications .cert-tabs li a {
         background: url("/typo3conf/ext/t3org_template/css/../i/s-buttons.png") repeat-x scroll 0 -64px rgba(0, 0, 0, 0);
         border-left: 1px solid #fff;
         color: #575757;
@@ -52,23 +52,23 @@ plugin.tx_certifications._CSS_DEFAULT_STYLE (
         padding: 0 4px;
     }
 
-    .tx_certifications .tabs li.inactive a {
+    .tx_certifications .cert-tabs li.cert-inactive a {
         color: #C8C8C8;
     }
 
 
-    .tx_certifications .panel {
+    .tx_certifications .cert-panel {
         border-top: 1px solid #C8C8C8;
         margin-top: -1px;
     }
 
-    .tx_certifications .panel table {
+    .tx_certifications .cert-panel table {
         border-collapse: collapse;
         margin-bottom: 28px;
         width: 100%;
     }
 
-    .tx_certifications .panel table th {
+    .tx_certifications .cert-panel table th {
         background: none;
         border: none;
         font-size: 11px;
@@ -77,9 +77,9 @@ plugin.tx_certifications._CSS_DEFAULT_STYLE (
         text-align: left;
     }
 
-    .tx_certifications .panel table th a { color: #000; }
+    .tx_certifications .cert-panel table th a { color: #000; }
 
-    .tx_certifications .panel table td {
+    .tx_certifications .cert-panel table td {
         vertical-align: top;
         background: none;
         border-color: #dbdbdb;
@@ -88,19 +88,19 @@ plugin.tx_certifications._CSS_DEFAULT_STYLE (
         padding: 15px 0 13px;
     }
 
-    .tx_certifications .panel table td h5 { font-weight: bold; }
-    .tx_certifications .panel table td h5 a { text-decoration: underline; }
+    .tx_certifications .cert-panel table td h5 { font-weight: bold; }
+    .tx_certifications .cert-panel table td h5 a { text-decoration: underline; }
 
-    .tx-certifications .head { float: left; }
+    .tx-certifications .cert-head { float: left; }
 
-    .tx-certifications .user-image {
+    .tx-certifications .cert-user-image {
         float: right;
         width: 340px;
         position: relative;
         margin-left: 20px;
     }
 
-    .tx-certifications .reason {
+    .tx-certifications .cert-reason {
         position: absolute;
         right: 0;
         bottom: 10px;
@@ -114,7 +114,7 @@ plugin.tx_certifications._CSS_DEFAULT_STYLE (
         margin-left: 60px;
     }
 
-    .tx-certifications .name {
+    .tx-certifications .cert-name {
         display: block;
         font-size: 10px;
         font-weight: normal;
@@ -123,13 +123,13 @@ plugin.tx_certifications._CSS_DEFAULT_STYLE (
         font-style: normal;
     }
 
-    .tx-certifications .country {
+    .tx-certifications .cert-country {
         clear: left;
         float: left;
         margin-bottom: 20px;
     }
 
-    .tx-certifications .certificates, .tx-certifications .contact {
+    .tx-certifications .certificates, .tx-certifications .cert-contact {
         clear: left;
         margin: 30px 0;
     }

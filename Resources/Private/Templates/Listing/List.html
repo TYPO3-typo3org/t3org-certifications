@@ -14,7 +14,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 <f:section name="main">
 
     <div class="tx_certifications">
-        <ul class="tabs">
+        <ul class="cert-tabs">
             <f:for each="{feUserss}" as="feUsers" key="label">
                 <f:if condition="{feUsers}">
                     <f:then>
@@ -23,14 +23,14 @@ Otherwise your changes will be overwritten the next time you save the extension 
                         </li>
                     </f:then>
                     <f:else>
-                        <li class="inactive">
+                        <li class="cert-inactive">
                             <f:link.page pageUid="#{label}">{label}</f:link.page>
                         </li>
                     </f:else>
                 </f:if>
             </f:for>
         </ul>
-        <div class="panel">
+        <div class="cert-panel">
             <f:for each="{feUserss}" as="feUsers" key="label">
                 <f:if condition="{feUsers}">
                     <h2 id="{label}">{label}</h2>
