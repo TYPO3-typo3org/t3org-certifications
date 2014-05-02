@@ -42,7 +42,7 @@ CREATE TABLE tx_certifications_domain_model_certificate (
 	certification_date int(11) DEFAULT '0' NOT NULL,
 	expiration_date int(11) DEFAULT '0' NOT NULL,
 	allow_listing tinyint(1) unsigned DEFAULT '0' NOT NULL,
-	expired tinyint(1) unsigned DEFAULT '0' NOT NULL,
+	version_four tinyint(1) unsigned DEFAULT '0' NOT NULL,
 	certificate_type int(11) unsigned DEFAULT '0',
 	user int(11) unsigned DEFAULT '0' NOT NULL,
 

@@ -10,7 +10,7 @@
 	   
 			<label index="certification_date.description">certificationDate</label>
 			<label index="allow_listing.description">allowListing</label>
-			<label index="expired.description">expired</label>
+			<label index="expired.description">Some certificates for version 4.x do not expire. They are valid for the whole major version 4. Later certificates are valid for a timed period.</label>
 			<label index="certificate_type.description">certificateType</label>
 		</languageKey>
 	</data>

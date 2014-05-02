@@ -32,19 +32,19 @@ while( !feof($fp) ) {
 	$certificationDate = date("U",strtotime($zeile[4]));
     $expirationDate = strtotime('+3 years', $certificationDate);
     if ($zeile[6] == 'Version 4.x') {
-        $expired = TRUE;
+        $version_four = TRUE;
     } else {
-        $expired = FALSE;
+        $version_four = FALSE;
     }
 
     $query = sprintf(
-        'INSERT INTO tx_certifications_domain_model_certificate (pid,user,certification_date,allow_listing,expired,certificate_type,expiration_date) '.
+        'INSERT INTO tx_certifications_domain_model_certificate (pid,user,certification_date,allow_listing,version_four,certificate_type,expiration_date) '.
         'VALUES(%d, %d, %d, %d, %d, %d, %d);',
         $storagePid,        //pid
         $userId,            //user
         $certificationDate, //certification_date
         1,                  //allow_listing
-	    (int)$expired,      // expired
+	    (int)$version_four,      // version_four
         1,                  // certificate_type
         $expirationDate     // expiration_date
     );
@@ -55,5 +55,4 @@ while( !feof($fp) ) {
 }
 
 fclose($fp);
-
 

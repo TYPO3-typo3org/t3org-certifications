@@ -15,60 +15,54 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
     <div class="tx_certifications">
         <ul class="cert-tabs">
-            <f:for each="{feUserss}" as="feUsers" key="label">
-                <f:if condition="{feUsers}">
-                    <f:then>
-                        <li>
-                            <f:link.page pageUid="#{label}">{label}</f:link.page>
-                        </li>
-                    </f:then>
-                    <f:else>
-                        <li class="cert-inactive">
-                            <f:link.page pageUid="#{label}">{label}</f:link.page>
-                        </li>
-                    </f:else>
-                </f:if>
+            <f:for each="{chars}" as="label">
+                <li>
+                    <f:link.action action="list" arguments="{char: label}">{label}</f:link.action>
+                </li>
             </f:for>
         </ul>
         <div class="cert-panel">
-            <f:for each="{feUserss}" as="feUsers" key="label">
-                <f:if condition="{feUsers}">
-                    <h2 id="{label}">{label}</h2>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th><f:translate key="tx_certifications_domain_model_user.name" /></th>
-                            <th><f:translate key="tx_certifications_domain_model_user.country" /></th>
-                            <th><f:translate key="tx_certifications_domain_model_user.certificate" /></th>
-                        </tr>
-                        </thead>
-                        <f:for each="{feUsers}" as="feUser">
-                            <tr>
-                                <f:if condition="{settings.singlePid}">
-                                    <f:then>
-                                        <td><h5><f:link.action action="show" pageUid="{settings.singlePid}" arguments="{user : feUser}">{feUser.lastName}, {feUser.firstName}</f:link.action></h5></td>
-                                    </f:then>
-                                    <f:else>
-                                        <td><h5><f:link.action action="show" arguments="{user : feUser}">{feUser.lastName}, {feUser.firstName}</f:link.action></h5></td>
-                                    </f:else>
-                                </f:if>
-                                <td>{feUser.country}</td>
-                                <td>
-                                    <ul>
-                                        <f:for each="{feUser.certificates}" as="certificate">
-                                            <f:if condition="{0:certificate.allowListing} == {0:'1'}">
-                                                <li>{certificate.certificateType.title}
-                                                    (<f:if condition="{certificate.expired}"><f:then><f:translate key="tx_certifications_domain_model_user.no_expiration" /></f:then><f:else><f:format.date format="d.m.Y">{certificate.certificationDate}</f:format.date> - <f:format.date format="d.m.Y">{certificate.expirationDate}</f:format.date></f:else></f:if>)
-                                                </li>
-                                            </f:if>
-                                        </f:for>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </f:for>
-                    </table>
-                </f:if>
-            </f:for>
+            <h2 id="{char}">{char}</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th><f:translate key="tx_certifications_domain_model_user.name" /></th>
+                    <th><f:translate key="tx_certifications_domain_model_user.country" /></th>
+                    <th><f:translate key="tx_certifications_domain_model_user.certificate" /></th>
+                </tr>
+                </thead>
+                <f:for each="{feUsers}" as="feUser">
+                    <tr>
+                        <f:if condition="{settings.singlePid}">
+                            <f:then>
+                                <td><h5><f:link.action action="show" pageUid="{settings.singlePid}" arguments="{user : feUser}">{feUser.lastName}, {feUser.firstName}</f:link.action></h5></td>
+                            </f:then>
+                            <f:else>
+                                <td><h5><f:link.action action="show" arguments="{user : feUser}">{feUser.lastName}, {feUser.firstName}</f:link.action></h5></td>
+                            </f:else>
+                        </f:if>
+                        <td>{feUser.country}</td>
+                        <td>
+                            <ul>
+                                <f:for each="{feUser.certificates}" as="certificate">
+                                    <f:if condition="{0:certificate.allowListing} == {0:'1'}">
+                                        <li>{certificate.certificateType.title}
+                                            <f:if condition="{certificate.versionFour}">
+												<f:then>
+													<f:translate key="tx_certifications_domain_model_user.no_expiration" />
+												</f:then>
+												<f:else>
+													<f:format.date format="d.m.Y">{certificate.certificationDate}</f:format.date> - <f:format.date format="d.m.Y">{certificate.expirationDate}</f:format.date>
+												</f:else>
+											</f:if>
+                                        </li>
+                                    </f:if>
+                                </f:for>
+                            </ul>
+                        </td>
+                    </tr>
+                </f:for>
+            </table>
         </div>
     </div>
 

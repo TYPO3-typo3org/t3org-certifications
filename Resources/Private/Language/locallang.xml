@@ -13,7 +13,7 @@
 			<label index="tx_certifications_domain_model_certificate">Certificate</label>
 			<label index="tx_certifications_domain_model_certificate.certification_date">certificationDate</label>
 			<label index="tx_certifications_domain_model_certificate.allow_listing">allowListing</label>
-			<label index="tx_certifications_domain_model_certificate.expired">expired</label>
+			<label index="tx_certifications_domain_model_certificate.version_four">Version 4.x (no expiration)</label>
 			<label index="tx_certifications_domain_model_certificate.certificate_type">certificateType</label>
 			<label index="tx_certifications_domain_model_certificatetype">CertificateType</label>
 			<label index="tx_certifications_domain_model_certificatetype.title">title</label>
@@ -21,7 +21,7 @@
             <label index="tx_certifications_domain_model_user.name">Name</label>
             <label index="tx_certifications_domain_model_user.country">Country</label>
             <label index="tx_certifications_domain_model_user.certificate">Certificate</label>
-            <label index="tx_certifications_domain_model_user.no_expiration">no expiration</label>
+            <label index="tx_certifications_domain_model_user.no_expiration">Certificate does not expire for version 4.x.</label>
             <label index="tx_certifications_domain_model_user.myCertificates">My Certificates</label>
             <label index="tx_certifications_domain_model_user.contact">Contact</label>
         </languageKey>

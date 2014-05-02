@@ -56,11 +56,11 @@ class Tx_Certifications_Domain_Model_Certificate extends Tx_Extbase_DomainObject
 	protected $allowListing = TRUE;
 
 	/**
-	 * expired
+ 	 * true for all certifications for 4.x
 	 *
 	 * @var boolean
 	 */
-	protected $expired = FALSE;
+	protected $versionFour = FALSE;
 
 	/**
 	 * certificateType
@@ -136,31 +136,31 @@ class Tx_Certifications_Domain_Model_Certificate extends Tx_Extbase_DomainObject
 	}
 
 	/**
-	 * Returns the expired
+	 * Returns the version_four
 	 *
-	 * @return boolean $expired
+	 * @return boolean $version_four
 	 */
-	public function getExpired() {
-		return $this->expired;
+	public function getVersionFour() {
+		return $this->versionFour;
 	}
 
 	/**
-	 * Sets the expired
+	 * Sets the version_four
 	 *
-	 * @param boolean $expired
+	 * @param boolean $version_four
 	 * @return void
 	 */
-	public function setExpired($expired) {
-		$this->expired = $expired;
+	public function setVersionFour($versionFour) {
+		$this->versionFour = $versionFour;
 	}
 
 	/**
-	 * Returns the boolean state of expired
+	 * Returns the boolean state of version_four
 	 *
 	 * @return boolean
 	 */
-	public function isExpired() {
-		return $this->getExpired();
+	public function isVersionFour() {
+		return $this->getVersionFour();
 	}
 
 	/**

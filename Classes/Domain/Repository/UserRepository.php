@@ -47,6 +47,42 @@ class Tx_Certifications_Domain_Repository_UserRepository extends Tx_Extbase_Pers
         return $return;
     }
 
+	/**
+	 * findByFistChar
+	 *
+	 * @param string $char
+	 * @return Tx_Extbase_Query_Result
+	 */
+	public function findByFirstChar($char = 'A') {
+		$char = $GLOBALS['TYPO3_DB']->escapeStrForLike($char, 'fe_users');
+		$query = $this->createQuery();
+		$query->setOrderings(
+			array(
+				'last_name' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING,
+				'first_name' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING
+			)
+		);
+		if ($char !== '#') {
+			$query->matching(
+				$query->like('last_name', $char . '%')
+			);
+			return $query->execute();
+		}
+
+			// find all users theirs names do not begin with a letter
+		$letters = range('A', 'Z');
+		$constraints = array();
+		foreach ($letters as $letter) {
+			$constraints[] = $query->like('last_name', $letter . '%');
+		}
+		$query->matching(
+			$query->logicalNot(
+				$query->logicalOr($constraints)
+			)
+		);
+		return $query->execute();
+ 	}
+
     /**
      * @param $sortby
      * @param $sorting

@@ -123,9 +123,9 @@ $TCA['tx_certifications_domain_model_certificate'] = array(
 				'default' => 1
 			),
 		),
-		'expired' => array(
+		'version_four' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:certifications/Resources/Private/Language/locallang_db.xml:tx_certifications_domain_model_certificate.expired',
+			'label' => 'LLL:EXT:certifications/Resources/Private/Language/locallang_db.xml:tx_certifications_domain_model_certificate.version_four',
 			'config' => array(
 				'type' => 'check',
 				'default' => 0

@@ -39,7 +39,7 @@ $TCA['tx_certifications_domain_model_certificate'] = array(
 			'starttime' => 'starttime',
 			'endtime' => 'endtime',
 		),
-		'searchFields' => 'certification_date,allow_listing,expired,certificate_type,',
+		'searchFields' => 'certification_date,allow_listing,certificate_type,',
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/Certificate.php',
 		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_certifications_domain_model_certificate.gif'
 	),
