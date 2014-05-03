@@ -13,7 +13,7 @@ $TCA['tx_certifications_domain_model_user'] = array(
 		'0' => array('showitem' => '
 			disable,first_name,middle_name,last_name,country,
 			--div--;LLL:EXT:cms/locallang_tca.xml:fe_users.tabs.access, starttime, endtime,
-			--div--;LLL:EXT:cms/locallang_tca.xml:fe_users.tabs.extended,email,public_email_address,twitter,public_twitter,cert_reason,certificates,fe_users
+			--div--;LLL:EXT:cms/locallang_tca.xml:fe_users.tabs.extended,email,public_email_address,twitter,public_twitter,cert_reason,certificates,fe_user
 		')
 	),
 	'palettes' => array(
@@ -155,17 +155,19 @@ $TCA['tx_certifications_domain_model_user'] = array(
 				),
 			),
 		),
-		'fe_users' => array(
+		'fe_user' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:certifications/Resources/Private/Language/locallang_db.xml:tx_certifications_domain_model_user.fe_user',
 			'config' => Array (
-				'type' => 'group',
-				'internal_type' => 'db',
+				'type' => 'select',
 				'size' => 1,
 				'minitems' => 0,
 				'maxitems' => 1,
-				'eval' => 'required',
-				'allowed' => 'fe_users',
+				'foreign_table' => 'fe_users',
+				'items' => array (
+					array('', ''),
+					array('LLL:EXT:certifications/Resources/Private/Language/locallang_db.xml:tx_certifications_domain_model_user.fe_user', '--div--'),
+				),
 				'wizards' => Array(
 					'suggest' => array(
 						'type' => 'suggest'

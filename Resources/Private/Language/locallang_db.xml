@@ -20,7 +20,7 @@
             <label index="tx_certifications_domain_model_user.no_expiration">Certificate does not expire for version 4.x.</label>
             <label index="tx_certifications_domain_model_user.myCertificates">My Certificates</label>
             <label index="tx_certifications_domain_model_user.contact">Contact</label>
-			<label index="tx_certifications_domain_model_user.fe_user">Frontend User</label>
+			<label index="tx_certifications_domain_model_user.fe_users">Frontend User</label>
 
 			<label index="tx_certifications_domain_model_certificate">Certificate</label>
 			<label index="tx_certifications_domain_model_certificate.certification_date">Certification Date</label>

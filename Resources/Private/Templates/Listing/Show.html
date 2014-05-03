@@ -14,21 +14,20 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 <f:section name="main">
 
-    <h1 class="csc-firstHeader cert-head">{certUsers.firstName} {certUsers.lastName}</h1>
-
-    <f:if condition="{certUsers.image}">
-        <div class="cert-user-image"><cert:GrayImage src="uploads/pics/{certUsers.image}" width="340m" alt="{certUsers.firstName} {certUsers.lastName}" />
-            <f:if condition="{certUsers.certReason}">
-                <span class="cert-reason">"{certUsers.certReason}" <span class="cert-name">{certUsers.firstName} {certUsers.lastName}</span></span>
+    <h1 class="csc-firstHeader cert-head">{certUser.firstName} {certUser.lastName}</h1>
+    <f:if condition="{certUser.feUser.image}">
+        <div class="cert-user-image"><cert:GrayImage src="uploads/pics/{certUser.feUser.image}" width="340m" alt="{certUser.firstName} {certUser.lastName}" />
+            <f:if condition="{certUser.certReason}">
+                <span class="cert-reason">"{certUser.certReason}" <span class="cert-name">{certUser.firstName} {certUser.lastName}</span></span>
             </f:if>
         </div>
     </f:if>
 
-    <span class="cert-country">{certUsers.country}</span>
+    <span class="cert-country">{certUser.country}</span>
     <div class="certificates">
         <h3><f:translate key="tx_certifications_domain_model_user.myCertificates" /></h3>
         <ul>
-            <f:for each="{certUsers.certificates}" as="certificate">
+            <f:for each="{certUser.certificates}" as="certificate">
                 <f:if condition="{0:certificate.allowListing} == {0:'1'}">
                     <li>{certificate.certificateType.title}
                         (<f:if condition="{certificate.expired}"><f:then><f:translate key="tx_certifications_domain_model_user.no_expiration" /></f:then><f:else><f:format.date format="d.m.Y">{certificate.certificationDate}</f:format.date> - <f:format.date format="d.m.Y">{certificate.expirationDate}</f:format.date></f:else></f:if>)
@@ -38,14 +37,14 @@ Otherwise your changes will be overwritten the next time you save the extension 
         </ul>
     </div>
 
-    <f:if condition="{certUsers.publicInformationAvailable}">
+    <f:if condition="{certUser.publicInformationAvailable}">
         <div class="cert-contact">
             <h3><f:translate key="tx_certifications_domain_model_user.contact" /></h3>
-            <f:if condition="{certUsers.publicEmail}">
-            	<p><f:link.email email="{certUsers.email}" /></p>
+            <f:if condition="{certUser.publicEmail}">
+            	<p><f:link.email email="{certUser.email}" /></p>
             </f:if>
-            <f:if condition="{certUsers.publicTwitter}">
-                <p><f:link.external uri="https://www.twitter.com/{certUsers.twitter}" target="_blank">@{certUsers.twitter}</f:link.external></p>
+            <f:if condition="{certUser.publicTwitter}">
+                <p><f:link.external uri="https://www.twitter.com/{certUser.twitter}" target="_blank">@{certUser.twitter}</f:link.external></p>
             </f:if>
         </div>
     </f:if>

@@ -31,7 +31,7 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Tx_Certifications_Domain_Model_User extends Tx_Extbase_Domain_Model_FrontendUser {
+class Tx_Certifications_Domain_Model_User extends Tx_Extbase_DomainObject_AbstractEntity {
 
 
 	/**
@@ -77,12 +77,11 @@ class Tx_Certifications_Domain_Model_User extends Tx_Extbase_Domain_Model_Fronte
 	protected $certificates;
 
 	/**
-	 * feUsers
+	 * feUser
 	 *
-	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_Extbase_Domain_Model_Users>
-	 * @lazy
+	 * @var Tx_T3oAjaxlogin_Domain_Model_User
 	 */
-	protected $feUsers;
+	protected $feUser;
 
     /**
      * twitter
@@ -219,24 +218,24 @@ class Tx_Certifications_Domain_Model_User extends Tx_Extbase_Domain_Model_Fronte
 	}
 
 	/**
-	 * getFeUsers
+	 * getFeUser
 	 * Returns the linked frontend user
 	 *
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_Extbase_Domain_Model_Users> $feUsers
+	 * @return Tx_T3oAjaxlogin_Domain_Model_User $feUser
 	 */
-	public function getFeUsers() {
-		return $this->feUsers;
+	public function getFeUser() {
+		return $this->feUser;
 	}
 
 	/**
-	 * setFeUsers
+	 * setFeUser
 	 * Sets the frontend user
 	 *
-	 * @param Tx_Extbase_Persistence_ObjectStorage<Tx_Extbase_Domain_Model_Users $feUsers> $feUsers
+	 * @param Tx_T3oAjaxlogin_Domain_Model_User $feUser
 	 * @return void
 	 */
-	public function setFeUsers(Tx_Extbase_Domain_Model_Users $feUsers) {
-		$this->feUsers = $feUsers;
+	public function setFeUser($feUser) {
+		$this->feUser = $feUser;
 	}
 
 	/**
@@ -335,8 +334,5 @@ class Tx_Certifications_Domain_Model_User extends Tx_Extbase_Domain_Model_Fronte
 	public function getTwitter() {
 		return $this->twitter;
 	}
-
-
-
 }
 ?>
