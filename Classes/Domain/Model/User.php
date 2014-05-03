@@ -76,6 +76,14 @@ class Tx_Certifications_Domain_Model_User extends Tx_Extbase_Domain_Model_Fronte
 	 */
 	protected $certificates;
 
+	/**
+	 * feUsers
+	 *
+	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_Extbase_Domain_Model_Users>
+	 * @lazy
+	 */
+	protected $feUsers;
+
     /**
      * twitter
      *
@@ -211,6 +219,27 @@ class Tx_Certifications_Domain_Model_User extends Tx_Extbase_Domain_Model_Fronte
 	}
 
 	/**
+	 * getFeUsers
+	 * Returns the linked frontend user
+	 *
+	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_Extbase_Domain_Model_Users> $feUsers
+	 */
+	public function getFeUsers() {
+		return $this->feUsers;
+	}
+
+	/**
+	 * setFeUsers
+	 * Sets the frontend user
+	 *
+	 * @param Tx_Extbase_Persistence_ObjectStorage<Tx_Extbase_Domain_Model_Users $feUsers> $feUsers
+	 * @return void
+	 */
+	public function setFeUsers(Tx_Extbase_Domain_Model_Users $feUsers) {
+		$this->feUsers = $feUsers;
+	}
+
+	/**
 	 * Returns the certReason
 	 *
 	 * @return string $certReason
@@ -258,6 +287,18 @@ class Tx_Certifications_Domain_Model_User extends Tx_Extbase_Domain_Model_Fronte
 	}
 
 	/**
+	 * isPublicInformationAvailable
+	 * Returns TRUE if there is at least either a public
+	 * email adress or a public twitter handle
+	 *
+	 * @return void
+	 */
+	public function isPublicInformationAvailable() {
+		return ($this->isPublicEmailAddress() && $this->getEmail())
+			|| ($this->isPublicTwitter() && $this->getTwitter());
+	}
+
+	/**
 	 * @param boolean $publicTwitter
 	 */
 	public function setPublicTwitter($publicTwitter) {
@@ -269,6 +310,16 @@ class Tx_Certifications_Domain_Model_User extends Tx_Extbase_Domain_Model_Fronte
 	 */
 	public function getPublicTwitter() {
 		return $this->publicTwitter;
+	}
+
+	/**
+	 * isPublicTwitter
+	 * Return the boolean state of publicTwitter
+	 *
+	 * @return void
+	 */
+	public function isPublicTwitter() {
+		return $this->getPublicTwitter();
 	}
 
 	/**

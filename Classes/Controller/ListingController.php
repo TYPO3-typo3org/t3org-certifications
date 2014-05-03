@@ -66,7 +66,7 @@ class Tx_Certifications_Controller_ListingController extends Tx_Extbase_MVC_Cont
 	 * @return void
 	 */
 	public function showAction(Tx_Certifications_Domain_Model_User $user) {
-		$this->view->assign('feUsers', $user);
+		$this->view->assign('certUsers', $user);
 	}
 
 	/**
