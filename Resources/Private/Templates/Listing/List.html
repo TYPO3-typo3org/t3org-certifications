@@ -46,7 +46,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
                             <ul>
                                 <f:for each="{feUser.certificates}" as="certificate">
                                     <f:if condition="{0:certificate.allowListing} == {0:'1'}">
-                                        <li>{certificate.certificateType.title}
+                                        <li>{certificate.certificateType.title}:
                                             <f:if condition="{certificate.versionFour}">
 												<f:then>
 													<f:translate key="tx_certifications_domain_model_user.no_expiration" />
