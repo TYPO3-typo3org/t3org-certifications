@@ -69,6 +69,13 @@ class Tx_Certifications_Domain_Model_User extends Tx_Extbase_DomainObject_Abstra
 	protected $publicEmailAddress = FALSE;
 
 	/**
+	 * email
+	 *
+	 * @var string
+	 */
+	protected $email;
+
+	/**
 	 * certificates
 	 *
 	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_Certifications_Domain_Model_Certificate>
@@ -255,6 +262,25 @@ class Tx_Certifications_Domain_Model_User extends Tx_Extbase_DomainObject_Abstra
 	 */
 	public function setCertReason($certReason) {
 		$this->certReason = $certReason;
+	}
+
+	/**
+	 * getEmail
+	 *
+	 * @return string $email
+	 */
+	public function getEmail() {
+		return $this->email;
+	}
+
+	/**
+	 * setEmail
+	 *
+	 * @param string $email
+	 * @return void
+	 */
+	public function setEmail($email = '') {
+		$this->email = $email;
 	}
 
 	/**

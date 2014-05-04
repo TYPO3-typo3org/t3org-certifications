@@ -53,5 +53,4 @@ while( !feof($fp) ) {
 
 	$userId++;
 }
-echo 'INSERT INTO tx_certifications_domain_model_certificatetype (title) VALUES ("Integrator");';
 fclose($fp);
