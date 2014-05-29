@@ -17,7 +17,7 @@ plugin.tx_certifications._CSS_DEFAULT_STYLE (
     .tx_certifications { overflow: hidden; }
 
     .tx_certifications .cert-tabs {
-        margin: 0 0 0 8px;
+        margin: 0 0 20px 8px;
         overflow: hidden;
         padding: 0;
     }
@@ -60,6 +60,7 @@ plugin.tx_certifications._CSS_DEFAULT_STYLE (
     .tx_certifications .cert-panel {
         border-top: 1px solid #C8C8C8;
         margin-top: -1px;
+        padding-top: 20px;
     }
 
     .tx_certifications .cert-panel table {
@@ -133,4 +134,8 @@ plugin.tx_certifications._CSS_DEFAULT_STYLE (
         clear: left;
         margin: 30px 0;
     }
+
+	.tx-certifications .cert-panel ul li {
+		background: none;
+	}
 )
