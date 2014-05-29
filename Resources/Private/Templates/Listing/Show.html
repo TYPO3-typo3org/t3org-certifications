@@ -40,7 +40,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
     <f:if condition="{certUser.publicInformationAvailable}">
         <div class="cert-contact">
             <h3><f:translate key="tx_certifications_domain_model_user.contact" /></h3>
-            <f:if condition="{certUser.publicEmail}">
+            <f:if condition="{certUser.publicEmailAddress}">
             	<p><f:link.email email="{certUser.email}" /></p>
             </f:if>
             <f:if condition="{certUser.publicTwitter}">
