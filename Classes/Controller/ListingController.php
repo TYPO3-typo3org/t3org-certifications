@@ -46,8 +46,10 @@ class Tx_Certifications_Controller_ListingController extends Tx_Extbase_MVC_Cont
      * @param string $char
      * @return void
      */
-    public function listAction($char = 'A') {
-		$chars = range('A', 'Z');
+	public function listAction($char = NULL) {
+		if (empty($char)) {
+			$char = 'A';
+		}
  	   	array_push($chars, '#');
 		$feUsers = $this->userRepository->findByFirstChar($char);
 		$this->view->assignMultiple(
