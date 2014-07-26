@@ -50,6 +50,7 @@ class Tx_Certifications_Controller_ListingController extends Tx_Extbase_MVC_Cont
 		if (empty($char)) {
 			$char = 'A';
 		}
+		$chars = range('A', 'Z');
  	   	array_push($chars, '#');
 		$feUsers = $this->userRepository->findByFirstChar($char);
 		$this->view->assignMultiple(
