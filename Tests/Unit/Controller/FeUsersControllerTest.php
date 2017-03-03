@@ -4,7 +4,7 @@
  *  Copyright notice
  *
  *  (c) 2014 Ole Hartwig <o.hartwig@web-vision.de>, web-vision gmbh
- *  			
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -36,26 +36,31 @@
  *
  * @author Ole Hartwig <o.hartwig@web-vision.de>
  */
-class Tx_Certifications_Controller_FeUsersControllerTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
-	/**
-	 * @var Tx_Certifications_Domain_Model_User
-	 */
-	protected $fixture;
+class Tx_Certifications_Controller_FeUsersControllerTest extends Tx_Extbase_Tests_Unit_BaseTestCase
+{
+    /**
+     * @var Tx_Certifications_Domain_Model_User
+     */
+    protected $fixture;
 
-	public function setUp() {
-		$this->fixture = new Tx_Certifications_Domain_Model_User();
-	}
+    public function setUp()
+    {
+        $this->fixture = new Tx_Certifications_Domain_Model_User();
+    }
 
-	public function tearDown() {
-		unset($this->fixture);
-	}
+    public function tearDown()
+    {
+        unset($this->fixture);
+    }
 
-	/**
-	 * @test
-	 */
-	public function dummyMethod() {
-		$this->markTestIncomplete();
-	}
+    /**
+     * @test
+     */
+    public function dummyMethod()
+    {
+        $this->markTestIncomplete();
+    }
 
 }
+
 ?>

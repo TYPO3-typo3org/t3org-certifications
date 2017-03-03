@@ -12,34 +12,37 @@
  *
  * The TYPO3 project - inspiring people to share!
  */
+class Tx_Certifications_Domain_Model_CertificateType extends Tx_Extbase_DomainObject_AbstractEntity
+{
 
-class Tx_Certifications_Domain_Model_CertificateType extends Tx_Extbase_DomainObject_AbstractEntity {
+    /**
+     * title
+     *
+     * @var string
+     */
+    protected $title;
 
-	/**
-	 * title
-	 *
-	 * @var string
-	 */
-	protected $title;
+    /**
+     * Returns the title
+     *
+     * @return string $title
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
 
-	/**
-	 * Returns the title
-	 *
-	 * @return string $title
-	 */
-	public function getTitle() {
-		return $this->title;
-	}
-
-	/**
-	 * Sets the title
-	 *
-	 * @param string $title
-	 * @return void
-	 */
-	public function setTitle($title) {
-		$this->title = $title;
-	}
+    /**
+     * Sets the title
+     *
+     * @param string $title
+     * @return void
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
 
 }
+
 ?>

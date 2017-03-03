@@ -4,7 +4,7 @@
  *  Copyright notice
  *
  *  (c) 2014 Ole Hartwig <o.hartwig@web-vision.de>, web-vision gmbh
- *  			
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -36,96 +36,110 @@
  *
  * @author Ole Hartwig <o.hartwig@web-vision.de>
  */
-class Tx_Certifications_Domain_Model_CertificateTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
-	/**
-	 * @var Tx_Certifications_Domain_Model_Certificate
-	 */
-	protected $fixture;
+class Tx_Certifications_Domain_Model_CertificateTest extends Tx_Extbase_Tests_Unit_BaseTestCase
+{
+    /**
+     * @var Tx_Certifications_Domain_Model_Certificate
+     */
+    protected $fixture;
 
-	public function setUp() {
-		$this->fixture = new Tx_Certifications_Domain_Model_Certificate();
-	}
+    public function setUp()
+    {
+        $this->fixture = new Tx_Certifications_Domain_Model_Certificate();
+    }
 
-	public function tearDown() {
-		unset($this->fixture);
-	}
+    public function tearDown()
+    {
+        unset($this->fixture);
+    }
 
-	/**
-	 * @test
-	 */
-	public function getCertificationDateReturnsInitialValueForDateTime() { }
+    /**
+     * @test
+     */
+    public function getCertificationDateReturnsInitialValueForDateTime()
+    {
+    }
 
-	/**
-	 * @test
-	 */
-	public function setCertificationDateForDateTimeSetsCertificationDate() { }
-	
-	/**
-	 * @test
-	 */
-	public function getAllowListingReturnsInitialValueForBoolean() { 
-		$this->assertSame(
-			TRUE,
-			$this->fixture->getAllowListing()
-		);
-	}
+    /**
+     * @test
+     */
+    public function setCertificationDateForDateTimeSetsCertificationDate()
+    {
+    }
 
-	/**
-	 * @test
-	 */
-	public function setAllowListingForBooleanSetsAllowListing() { 
-		$this->fixture->setAllowListing(TRUE);
+    /**
+     * @test
+     */
+    public function getAllowListingReturnsInitialValueForBoolean()
+    {
+        $this->assertSame(
+            TRUE,
+            $this->fixture->getAllowListing()
+        );
+    }
 
-		$this->assertSame(
-			TRUE,
-			$this->fixture->getAllowListing()
-		);
-	}
-	
-	/**
-	 * @test
-	 */
-	public function getExpiredReturnsInitialValueForBoolean() { 
-		$this->assertSame(
-			TRUE,
-			$this->fixture->getExpired()
-		);
-	}
+    /**
+     * @test
+     */
+    public function setAllowListingForBooleanSetsAllowListing()
+    {
+        $this->fixture->setAllowListing(TRUE);
 
-	/**
-	 * @test
-	 */
-	public function setExpiredForBooleanSetsExpired() { 
-		$this->fixture->setExpired(TRUE);
+        $this->assertSame(
+            TRUE,
+            $this->fixture->getAllowListing()
+        );
+    }
 
-		$this->assertSame(
-			TRUE,
-			$this->fixture->getExpired()
-		);
-	}
-	
-	/**
-	 * @test
-	 */
-	public function getCertificateTypeReturnsInitialValueForTx_Certifications_Domain_Model_CertificateType() { 
-		$this->assertEquals(
-			NULL,
-			$this->fixture->getCertificateType()
-		);
-	}
+    /**
+     * @test
+     */
+    public function getExpiredReturnsInitialValueForBoolean()
+    {
+        $this->assertSame(
+            TRUE,
+            $this->fixture->getExpired()
+        );
+    }
 
-	/**
-	 * @test
-	 */
-	public function setCertificateTypeForTx_Certifications_Domain_Model_CertificateTypeSetsCertificateType() { 
-		$dummyObject = new Tx_Certifications_Domain_Model_CertificateType();
-		$this->fixture->setCertificateType($dummyObject);
+    /**
+     * @test
+     */
+    public function setExpiredForBooleanSetsExpired()
+    {
+        $this->fixture->setExpired(TRUE);
 
-		$this->assertSame(
-			$dummyObject,
-			$this->fixture->getCertificateType()
-		);
-	}
-	
+        $this->assertSame(
+            TRUE,
+            $this->fixture->getExpired()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function getCertificateTypeReturnsInitialValueForTx_Certifications_Domain_Model_CertificateType()
+    {
+        $this->assertEquals(
+            NULL,
+            $this->fixture->getCertificateType()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setCertificateTypeForTx_Certifications_Domain_Model_CertificateTypeSetsCertificateType()
+    {
+        $dummyObject = new Tx_Certifications_Domain_Model_CertificateType();
+        $this->fixture->setCertificateType($dummyObject);
+
+        $this->assertSame(
+            $dummyObject,
+            $this->fixture->getCertificateType()
+        );
+    }
+
 }
+
 ?>

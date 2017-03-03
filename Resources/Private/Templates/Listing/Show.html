@@ -1,14 +1,14 @@
 {namespace cert = Tx_Certifications_ViewHelpers}
-<f:layout name="Default" />
+<f:layout name="Default"/>
 
 This Template is responsible for displaying a single view for a domain object
 
 If you modify this template, do not forget to change the overwrite settings
 in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        Show.html: keep
+Resources:
+Private:
+Templates:
+Show.html: keep
 
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
@@ -16,7 +16,9 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
     <h1 class="csc-firstHeader cert-head">{certUser.firstName} {certUser.lastName}</h1>
     <f:if condition="{certUser.feUser.image}">
-        <div class="cert-user-image"><cert:GrayImage src="uploads/pics/{certUser.feUser.image}" width="340m" alt="{certUser.firstName} {certUser.lastName}" />
+        <div class="cert-user-image">
+            <cert:GrayImage src="uploads/pics/{certUser.feUser.image}" width="340m"
+                            alt="{certUser.firstName} {certUser.lastName}"/>
             <f:if condition="{certUser.certReason}">
                 <span class="cert-reason">"{certUser.certReason}" <span class="cert-name">{certUser.firstName} {certUser.lastName}</span></span>
             </f:if>
@@ -25,17 +27,21 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
     <span class="cert-country">{certUser.country}</span>
     <div class="certificates">
-        <h3><f:translate key="tx_certifications_domain_model_user.myCertificates" /></h3>
+        <h3>
+            <f:translate key="tx_certifications_domain_model_user.myCertificates"/>
+        </h3>
         <ul>
             <f:for each="{certUser.certificates}" as="certificate">
                 <f:if condition="{0:certificate.allowListing} == {0:'1'}">
                     <li>{certificate.certificateType.title}:
                         <f:if condition="{certificate.versionFour}">
                             <f:then>
-                                <f:translate key="tx_certifications_domain_model_user.no_expiration" />
+                                <f:translate key="tx_certifications_domain_model_user.no_expiration"/>
                             </f:then>
                             <f:else>
-                                <f:format.date format="d.m.Y">{certificate.certificationDate}</f:format.date> - <f:format.date format="d.m.Y">{certificate.expirationDate}</f:format.date>
+                                <f:format.date format="d.m.Y">{certificate.certificationDate}</f:format.date>
+                                -
+                                <f:format.date format="d.m.Y">{certificate.expirationDate}</f:format.date>
                             </f:else>
                         </f:if>
                     </li>
@@ -46,12 +52,20 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
     <f:if condition="{certUser.publicInformationAvailable}">
         <div class="cert-contact">
-            <h3><f:translate key="tx_certifications_domain_model_user.contact" /></h3>
+            <h3>
+                <f:translate key="tx_certifications_domain_model_user.contact"/>
+            </h3>
             <f:if condition="{certUser.publicEmailAddress}">
-            	<p><f:link.email email="{certUser.email}" /></p>
+                <p>
+                    <f:link.email email="{certUser.email}"/>
+                </p>
             </f:if>
             <f:if condition="{certUser.publicTwitter}">
-                <p><f:link.external uri="https://www.twitter.com/{certUser.twitter}" target="_blank">@{certUser.twitter}</f:link.external></p>
+                <p>
+                    <f:link.external uri="https://www.twitter.com/{certUser.twitter}" target="_blank">
+                        @{certUser.twitter}
+                    </f:link.external>
+                </p>
             </f:if>
         </div>
     </f:if>

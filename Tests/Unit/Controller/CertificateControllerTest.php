@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the TYPO3 CMS project.
  *
@@ -11,26 +12,31 @@
  *
  * The TYPO3 project - inspiring people to share!
  */
-class Tx_Certifications_Controller_CertificateControllerTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
-	/**
-	 * @var Tx_Certifications_Domain_Model_Certificate
-	 */
-	protected $fixture;
+class Tx_Certifications_Controller_CertificateControllerTest extends Tx_Extbase_Tests_Unit_BaseTestCase
+{
+    /**
+     * @var Tx_Certifications_Domain_Model_Certificate
+     */
+    protected $fixture;
 
-	public function setUp() {
-		$this->fixture = new Tx_Certifications_Domain_Model_Certificate();
-	}
+    public function setUp()
+    {
+        $this->fixture = new Tx_Certifications_Domain_Model_Certificate();
+    }
 
-	public function tearDown() {
-		unset($this->fixture);
-	}
+    public function tearDown()
+    {
+        unset($this->fixture);
+    }
 
-	/**
-	 * @test
-	 */
-	public function dummyMethod() {
-		$this->markTestIncomplete();
-	}
+    /**
+     * @test
+     */
+    public function dummyMethod()
+    {
+        $this->markTestIncomplete();
+    }
 
 }
+
 ?>

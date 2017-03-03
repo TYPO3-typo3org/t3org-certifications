@@ -10,35 +10,35 @@
 # "version" and "dependencies" must not be touched!
 ########################################################################
 
-$EM_CONF[$_EXTKEY] = array(
-	'title' => 'Certifications',
-	'description' => 'Extension for Displays a List of certified Persons based on fe_user',
-	'category' => 'plugin',
-	'author' => 'Ole Hartwig',
-	'author_email' => 'o.hartwig@web-vision.de',
-	'author_company' => 'web-vision gmbh',
-	'shy' => '',
-	'priority' => '',
-	'module' => '',
-	'state' => 'alpha',
-	'internal' => '',
-	'uploadfolder' => '1',
-	'createDirs' => '',
-	'modify_tables' => 'fe_users',
-	'clearCacheOnLoad' => 0,
-	'lockType' => '',
-	'version' => '',
-	'constraints' => array(
-		'depends' => array(
-			'extbase' => '1.3',
-			'fluid' => '1.3',
-			'typo3' => '4.5',
-		),
-		'conflicts' => array(
-		),
-		'suggests' => array(
-		),
-	),
-);
+$EM_CONF[$_EXTKEY] = [
+    'title' => 'Certifications',
+    'description' => 'Extension for Displays a List of certified Persons based on fe_user',
+    'category' => 'plugin',
+    'author' => 'Ole Hartwig',
+    'author_email' => 'o.hartwig@web-vision.de',
+    'author_company' => 'web-vision gmbh',
+    'shy' => '',
+    'priority' => '',
+    'module' => '',
+    'state' => 'alpha',
+    'internal' => '',
+    'uploadfolder' => '1',
+    'createDirs' => '',
+    'modify_tables' => 'fe_users',
+    'clearCacheOnLoad' => 0,
+    'lockType' => '',
+    'version' => '',
+    'constraints' => [
+        'depends' => [
+            'extbase' => '1.3',
+            'fluid' => '1.3',
+            'typo3' => '4.5',
+        ],
+        'conflicts' => [
+        ],
+        'suggests' => [
+        ],
+    ],
+];
 
 ?>

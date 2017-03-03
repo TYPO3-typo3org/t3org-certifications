@@ -1,16 +1,18 @@
 plugin.tx_certifications {
-	view {
-		templateRootPath = {$plugin.tx_certifications.view.templateRootPath}
-		partialRootPath = {$plugin.tx_certifications.view.partialRootPath}
-		layoutRootPath = {$plugin.tx_certifications.view.layoutRootPath}
-	}
-	persistence {
-		storagePid = {$plugin.tx_certifications.persistence.storagePid}
-	}
-	features {
-		# uncomment the following line to enable the new Property Mapper.
-		# rewrittenPropertyMapper = 1
-	}
+    view {
+        templateRootPath = {$plugin.tx_certifications.view.templateRootPath}
+        partialRootPath = {$plugin.tx_certifications.view.partialRootPath}
+        layoutRootPath = {$plugin.tx_certifications.view.layoutRootPath}
+    }
+
+    persistence {
+        storagePid = {$plugin.tx_certifications.persistence.storagePid}
+    }
+
+    features {
+        # uncomment the following line to enable the new Property Mapper.
+        # rewrittenPropertyMapper = 1
+    }
 }
 
 plugin.tx_certifications._CSS_DEFAULT_STYLE (

@@ -1,20 +1,20 @@
 <?php
 if (!defined('TYPO3_MODE')) {
-	die ('Access denied.');
+    die ('Access denied.');
 }
 
 Tx_Extbase_Utility_Extension::configurePlugin(
-	$_EXTKEY,
-	'Certlist',
-	array(
-		'Listing' => 'list, show',
+    $_EXTKEY,
+    'Certlist',
+    [
+        'Listing' => 'list, show',
 
-	),
-	// non-cacheable actions
-	array(
-		//'Listing' => 'listSorted',
+    ],
+    // non-cacheable actions
+    [
+        //'Listing' => 'listSorted',
 
-	)
+    ]
 );
 
 ?>

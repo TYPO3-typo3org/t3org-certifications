@@ -41,7 +41,8 @@
  * Could not get image resource for "NonExistingImage.png".
  * </output>
  */
-class Tx_Certifications_ViewHelpers_GrayImageViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractTagBasedViewHelper {
+class Tx_Certifications_ViewHelpers_GrayImageViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractTagBasedViewHelper
+{
 
     /**
      * @var tslib_cObj
@@ -72,7 +73,8 @@ class Tx_Certifications_ViewHelpers_GrayImageViewHelper extends Tx_Fluid_Core_Vi
      * @param Tx_Extbase_Configuration_ConfigurationManagerInterface $configurationManager
      * @return void
      */
-    public function injectConfigurationManager(Tx_Extbase_Configuration_ConfigurationManagerInterface $configurationManager) {
+    public function injectConfigurationManager(Tx_Extbase_Configuration_ConfigurationManagerInterface $configurationManager)
+    {
         $this->configurationManager = $configurationManager;
         $this->contentObject = $this->configurationManager->getContentObject();
     }
@@ -83,7 +85,8 @@ class Tx_Certifications_ViewHelpers_GrayImageViewHelper extends Tx_Fluid_Core_Vi
      * @return void
      * @author Bastian Waidelich <bastian@typo3.org>
      */
-    public function initializeArguments() {
+    public function initializeArguments()
+    {
         parent::initializeArguments();
         $this->registerUniversalTagAttributes();
         $this->registerTagAttribute('alt', 'string', 'Specifies an alternate text for an image', TRUE);
@@ -108,18 +111,19 @@ class Tx_Certifications_ViewHelpers_GrayImageViewHelper extends Tx_Fluid_Core_Vi
      * @author Sebastian Böttger <sboettger@cross-content.com>
      * @author Bastian Waidelich <bastian@typo3.org>
      */
-    public function render($src, $width = NULL, $height = NULL, $minWidth = NULL, $minHeight = NULL, $maxWidth = NULL, $maxHeight = NULL) {
+    public function render($src, $width = NULL, $height = NULL, $minWidth = NULL, $minHeight = NULL, $maxWidth = NULL, $maxHeight = NULL)
+    {
         if (TYPO3_MODE === 'BE') {
             $this->simulateFrontendEnvironment();
         }
-        $setup = array(
+        $setup = [
             'width' => $width,
             'height' => $height,
             'minW' => $minWidth,
             'minH' => $minHeight,
             'maxW' => $maxWidth,
             'maxH' => $maxHeight
-        );
+        ];
         if (TYPO3_MODE === 'BE' && substr($src, 0, 3) === '../') {
             $src = substr($src, 3);
         }
@@ -129,13 +133,13 @@ class Tx_Certifications_ViewHelpers_GrayImageViewHelper extends Tx_Fluid_Core_Vi
             if (TYPO3_MODE === 'BE') {
                 $this->resetFrontendEnvironment();
             }
-            throw new Tx_Fluid_Core_ViewHelper_Exception('Could not get image resource for "' . htmlspecialchars($src) . '".' , 1253191060);
+            throw new Tx_Fluid_Core_ViewHelper_Exception('Could not get image resource for "' . htmlspecialchars($src) . '".', 1253191060);
         }
         $imageInfo[3] = t3lib_div::png_to_gif_by_imagemagick($imageInfo[3]);
 
         //Convert to grey
         $newFile = substr($imageInfo[3], 0, -4) . '.jpg';
-        $cmd = t3lib_div::imageMagickCommand('convert', '"' . $imageInfo[3] . '" -colorspace Gray "' . $newFile . '"' , $GLOBALS['TYPO3_CONF_VARS']['GFX']['im_path_lzw']);
+        $cmd = t3lib_div::imageMagickCommand('convert', '"' . $imageInfo[3] . '" -colorspace Gray "' . $newFile . '"', $GLOBALS['TYPO3_CONF_VARS']['GFX']['im_path_lzw']);
         t3lib_utility_Command::exec($cmd);
         $imageInfo[3] = $newFile;
         if (@is_file($newFile)) {
@@ -170,7 +174,8 @@ class Tx_Certifications_ViewHelpers_GrayImageViewHelper extends Tx_Fluid_Core_Vi
      * @return void
      * @author Bastian Waidelich <bastian@typo3.org>
      */
-    protected function simulateFrontendEnvironment() {
+    protected function simulateFrontendEnvironment()
+    {
         $this->tsfeBackup = isset($GLOBALS['TSFE']) ? $GLOBALS['TSFE'] : NULL;
         // set the working directory to the site root
         $this->workingDirectoryBackup = getcwd();
@@ -194,7 +199,8 @@ class Tx_Certifications_ViewHelpers_GrayImageViewHelper extends Tx_Fluid_Core_Vi
      * @author Bastian Waidelich <bastian@typo3.org>
      * @see simulateFrontendEnvironment()
      */
-    protected function resetFrontendEnvironment() {
+    protected function resetFrontendEnvironment()
+    {
         $GLOBALS['TSFE'] = $this->tsfeBackup;
         chdir($this->workingDirectoryBackup);
     }

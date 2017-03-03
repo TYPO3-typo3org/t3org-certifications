@@ -44,7 +44,8 @@
                                         <params type="array">
                                             <blindLinkOptions>mail,spec,file,folder,url</blindLinkOptions>
                                         </params>
-                                        <JSopenParams>height=300,width=500,status=0,menubar=0,scrollbars=1</JSopenParams>
+                                        <JSopenParams>height=300,width=500,status=0,menubar=0,scrollbars=1
+                                        </JSopenParams>
                                     </link>
                                 </wizards>
                             </config>

@@ -4,7 +4,7 @@
  *  Copyright notice
  *
  *  (c) 2014 Ole Hartwig <o.hartwig@web-vision.de>, web-vision gmbh
- *  			
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -36,116 +36,129 @@
  *
  * @author Ole Hartwig <o.hartwig@web-vision.de>
  */
-class Tx_Certifications_Domain_Model_UserTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
-	/**
-	 * @var Tx_Certifications_Domain_Model_User
-	 */
-	protected $fixture;
+class Tx_Certifications_Domain_Model_UserTest extends Tx_Extbase_Tests_Unit_BaseTestCase
+{
+    /**
+     * @var Tx_Certifications_Domain_Model_User
+     */
+    protected $fixture;
 
-	public function setUp() {
-		$this->fixture = new Tx_Certifications_Domain_Model_User();
-	}
+    public function setUp()
+    {
+        $this->fixture = new Tx_Certifications_Domain_Model_User();
+    }
 
-	public function tearDown() {
-		unset($this->fixture);
-	}
+    public function tearDown()
+    {
+        unset($this->fixture);
+    }
 
-	/**
-	 * @test
-	 */
-	public function getCertReasonReturnsInitialValueForString() { }
+    /**
+     * @test
+     */
+    public function getCertReasonReturnsInitialValueForString()
+    {
+    }
 
-	/**
-	 * @test
-	 */
-	public function setCertReasonForStringSetsCertReason() { 
-		$this->fixture->setCertReason('Conceived at T3CON10');
+    /**
+     * @test
+     */
+    public function setCertReasonForStringSetsCertReason()
+    {
+        $this->fixture->setCertReason('Conceived at T3CON10');
 
-		$this->assertSame(
-			'Conceived at T3CON10',
-			$this->fixture->getCertReason()
-		);
-	}
-	
-	/**
-	 * @test
-	 */
-	public function getPublicEmailAddressReturnsInitialValueForBoolean() { 
-		$this->assertSame(
-			TRUE,
-			$this->fixture->getPublicEmailAddress()
-		);
-	}
+        $this->assertSame(
+            'Conceived at T3CON10',
+            $this->fixture->getCertReason()
+        );
+    }
 
-	/**
-	 * @test
-	 */
-	public function setPublicEmailAddressForBooleanSetsPublicEmailAddress() { 
-		$this->fixture->setPublicEmailAddress(TRUE);
+    /**
+     * @test
+     */
+    public function getPublicEmailAddressReturnsInitialValueForBoolean()
+    {
+        $this->assertSame(
+            TRUE,
+            $this->fixture->getPublicEmailAddress()
+        );
+    }
 
-		$this->assertSame(
-			TRUE,
-			$this->fixture->getPublicEmailAddress()
-		);
-	}
-	
-	/**
-	 * @test
-	 */
-	public function getCertificatesReturnsInitialValueForObjectStorageContainingTx_Certifications_Domain_Model_Certificate() { 
-		$newObjectStorage = new Tx_Extbase_Persistence_ObjectStorage();
-		$this->assertEquals(
-			$newObjectStorage,
-			$this->fixture->getCertificates()
-		);
-	}
+    /**
+     * @test
+     */
+    public function setPublicEmailAddressForBooleanSetsPublicEmailAddress()
+    {
+        $this->fixture->setPublicEmailAddress(TRUE);
 
-	/**
-	 * @test
-	 */
-	public function setCertificatesForObjectStorageContainingTx_Certifications_Domain_Model_CertificateSetsCertificates() { 
-		$certificate = new Tx_Certifications_Domain_Model_Certificate();
-		$objectStorageHoldingExactlyOneCertificates = new Tx_Extbase_Persistence_ObjectStorage();
-		$objectStorageHoldingExactlyOneCertificates->attach($certificate);
-		$this->fixture->setCertificates($objectStorageHoldingExactlyOneCertificates);
+        $this->assertSame(
+            TRUE,
+            $this->fixture->getPublicEmailAddress()
+        );
+    }
 
-		$this->assertSame(
-			$objectStorageHoldingExactlyOneCertificates,
-			$this->fixture->getCertificates()
-		);
-	}
-	
-	/**
-	 * @test
-	 */
-	public function addCertificateToObjectStorageHoldingCertificates() {
-		$certificate = new Tx_Certifications_Domain_Model_Certificate();
-		$objectStorageHoldingExactlyOneCertificate = new Tx_Extbase_Persistence_ObjectStorage();
-		$objectStorageHoldingExactlyOneCertificate->attach($certificate);
-		$this->fixture->addCertificate($certificate);
+    /**
+     * @test
+     */
+    public function getCertificatesReturnsInitialValueForObjectStorageContainingTx_Certifications_Domain_Model_Certificate()
+    {
+        $newObjectStorage = new Tx_Extbase_Persistence_ObjectStorage();
+        $this->assertEquals(
+            $newObjectStorage,
+            $this->fixture->getCertificates()
+        );
+    }
 
-		$this->assertEquals(
-			$objectStorageHoldingExactlyOneCertificate,
-			$this->fixture->getCertificates()
-		);
-	}
+    /**
+     * @test
+     */
+    public function setCertificatesForObjectStorageContainingTx_Certifications_Domain_Model_CertificateSetsCertificates()
+    {
+        $certificate = new Tx_Certifications_Domain_Model_Certificate();
+        $objectStorageHoldingExactlyOneCertificates = new Tx_Extbase_Persistence_ObjectStorage();
+        $objectStorageHoldingExactlyOneCertificates->attach($certificate);
+        $this->fixture->setCertificates($objectStorageHoldingExactlyOneCertificates);
 
-	/**
-	 * @test
-	 */
-	public function removeCertificateFromObjectStorageHoldingCertificates() {
-		$certificate = new Tx_Certifications_Domain_Model_Certificate();
-		$localObjectStorage = new Tx_Extbase_Persistence_ObjectStorage();
-		$localObjectStorage->attach($certificate);
-		$localObjectStorage->detach($certificate);
-		$this->fixture->addCertificate($certificate);
-		$this->fixture->removeCertificate($certificate);
+        $this->assertSame(
+            $objectStorageHoldingExactlyOneCertificates,
+            $this->fixture->getCertificates()
+        );
+    }
 
-		$this->assertEquals(
-			$localObjectStorage,
-			$this->fixture->getCertificates()
-		);
-	}
-	
+    /**
+     * @test
+     */
+    public function addCertificateToObjectStorageHoldingCertificates()
+    {
+        $certificate = new Tx_Certifications_Domain_Model_Certificate();
+        $objectStorageHoldingExactlyOneCertificate = new Tx_Extbase_Persistence_ObjectStorage();
+        $objectStorageHoldingExactlyOneCertificate->attach($certificate);
+        $this->fixture->addCertificate($certificate);
+
+        $this->assertEquals(
+            $objectStorageHoldingExactlyOneCertificate,
+            $this->fixture->getCertificates()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function removeCertificateFromObjectStorageHoldingCertificates()
+    {
+        $certificate = new Tx_Certifications_Domain_Model_Certificate();
+        $localObjectStorage = new Tx_Extbase_Persistence_ObjectStorage();
+        $localObjectStorage->attach($certificate);
+        $localObjectStorage->detach($certificate);
+        $this->fixture->addCertificate($certificate);
+        $this->fixture->removeCertificate($certificate);
+
+        $this->assertEquals(
+            $localObjectStorage,
+            $this->fixture->getCertificates()
+        );
+    }
+
 }
+
 ?>
