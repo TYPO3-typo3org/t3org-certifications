@@ -1,4 +1,6 @@
 <?php
+namespace T3o\Certifications\ViewHelpers;
+
 /**
  * This file is part of the TYPO3 CMS project.
  *
@@ -11,6 +13,14 @@
  *
  * The TYPO3 project - inspiring people to share!
  */
+
+use TYPO3\CMS\Core\Utility\CommandUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper;
+use TYPO3\CMS\Fluid\Core\ViewHelper\Exception;
+use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
+use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
  * Resizes a given image (if required) and renders the respective img tag
@@ -41,11 +51,11 @@
  * Could not get image resource for "NonExistingImage.png".
  * </output>
  */
-class Tx_Certifications_ViewHelpers_GrayImageViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractTagBasedViewHelper
+class GrayImageViewHelper extends AbstractTagBasedViewHelper
 {
 
     /**
-     * @var tslib_cObj
+     * @var ContentObjectRenderer
      */
     protected $contentObject;
 
@@ -55,7 +65,7 @@ class Tx_Certifications_ViewHelpers_GrayImageViewHelper extends Tx_Fluid_Core_Vi
     protected $tagName = 'img';
 
     /**
-     * @var t3lib_fe contains a backup of the current $GLOBALS['TSFE'] if used in BE mode
+     * @var TypoScriptFrontendController contains a backup of the current $GLOBALS['TSFE'] if used in BE mode
      */
     protected $tsfeBackup;
 
@@ -65,15 +75,15 @@ class Tx_Certifications_ViewHelpers_GrayImageViewHelper extends Tx_Fluid_Core_Vi
     protected $workingDirectoryBackup;
 
     /**
-     * @var Tx_Extbase_Configuration_ConfigurationManagerInterface
+     * @var ConfigurationManagerInterface
      */
     protected $configurationManager;
 
     /**
-     * @param Tx_Extbase_Configuration_ConfigurationManagerInterface $configurationManager
+     * @param ConfigurationManagerInterface $configurationManager
      * @return void
      */
-    public function injectConfigurationManager(Tx_Extbase_Configuration_ConfigurationManagerInterface $configurationManager)
+    public function injectConfigurationManager(ConfigurationManagerInterface $configurationManager)
     {
         $this->configurationManager = $configurationManager;
         $this->contentObject = $this->configurationManager->getContentObject();
@@ -133,22 +143,22 @@ class Tx_Certifications_ViewHelpers_GrayImageViewHelper extends Tx_Fluid_Core_Vi
             if (TYPO3_MODE === 'BE') {
                 $this->resetFrontendEnvironment();
             }
-            throw new Tx_Fluid_Core_ViewHelper_Exception('Could not get image resource for "' . htmlspecialchars($src) . '".', 1253191060);
+            throw new Exception('Could not get image resource for "' . htmlspecialchars($src) . '".', 1253191060);
         }
-        $imageInfo[3] = t3lib_div::png_to_gif_by_imagemagick($imageInfo[3]);
+        $imageInfo[3] = GeneralUtility::png_to_gif_by_imagemagick($imageInfo[3]);
 
         //Convert to grey
         $newFile = substr($imageInfo[3], 0, -4) . '.jpg';
-        $cmd = t3lib_div::imageMagickCommand('convert', '"' . $imageInfo[3] . '" -colorspace Gray "' . $newFile . '"', $GLOBALS['TYPO3_CONF_VARS']['GFX']['im_path_lzw']);
-        t3lib_utility_Command::exec($cmd);
+        $cmd = GeneralUtility::imageMagickCommand('convert', '"' . $imageInfo[3] . '" -colorspace Gray "' . $newFile . '"', $GLOBALS['TYPO3_CONF_VARS']['GFX']['im_path_lzw']);
+        CommandUtility::exec($cmd);
         $imageInfo[3] = $newFile;
         if (@is_file($newFile)) {
-            t3lib_div::fixPermissions($newFile);
+            GeneralUtility::fixPermissions($newFile);
         }
 
         $GLOBALS['TSFE']->imagesOnPage[] = $imageInfo[3];
 
-        $imageSource = $GLOBALS['TSFE']->absRefPrefix . t3lib_div::rawUrlEncodeFP($imageInfo[3]);
+        $imageSource = $GLOBALS['TSFE']->absRefPrefix . GeneralUtility::rawUrlEncodeFP($imageInfo[3]);
         if (TYPO3_MODE === 'BE') {
             $imageSource = '../' . $imageSource;
             $this->resetFrontendEnvironment();
@@ -181,9 +191,9 @@ class Tx_Certifications_ViewHelpers_GrayImageViewHelper extends Tx_Fluid_Core_Vi
         $this->workingDirectoryBackup = getcwd();
         chdir(PATH_site);
 
-        $typoScriptSetup = $this->configurationManager->getConfiguration(Tx_Extbase_Configuration_ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
-        $GLOBALS['TSFE'] = new stdClass();
-        $template = t3lib_div::makeInstance('t3lib_TStemplate');
+        $typoScriptSetup = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
+        $GLOBALS['TSFE'] = new \stdClass();
+        $template = GeneralUtility::makeInstance('t3lib_TStemplate');
         $template->tt_track = 0;
         $template->init();
         $template->getFileName_backPath = PATH_site;

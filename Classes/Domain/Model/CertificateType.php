@@ -1,4 +1,5 @@
 <?php
+namespace T3o\Certifications\Domain\Model;
 
 /**
  * This file is part of the TYPO3 CMS project.
@@ -12,7 +13,10 @@
  *
  * The TYPO3 project - inspiring people to share!
  */
-class Tx_Certifications_Domain_Model_CertificateType extends Tx_Extbase_DomainObject_AbstractEntity
+
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+
+class CertificateType extends AbstractEntity
 {
 
     /**

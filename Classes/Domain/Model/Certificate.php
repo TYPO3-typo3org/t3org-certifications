@@ -1,4 +1,5 @@
 <?php
+namespace T3o\Certifications\Domain\Model;
 
 /**
  * This file is part of the TYPO3 CMS project.
@@ -12,13 +13,16 @@
  *
  * The TYPO3 project - inspiring people to share!
  */
-class Tx_Certifications_Domain_Model_Certificate extends Tx_Extbase_DomainObject_AbstractEntity
+
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+
+class Certificate extends AbstractEntity
 {
 
     /**
      * certificationDate
      *
-     * @var DateTime
+     * @var \DateTime
      * @validate NotEmpty
      */
     protected $certificationDate;
@@ -26,7 +30,7 @@ class Tx_Certifications_Domain_Model_Certificate extends Tx_Extbase_DomainObject
     /**
      * expirationDate
      *
-     * @var DateTime
+     * @var \DateTime
      */
     protected $expirationDate;
 
@@ -47,14 +51,14 @@ class Tx_Certifications_Domain_Model_Certificate extends Tx_Extbase_DomainObject
     /**
      * certificateType
      *
-     * @var Tx_Certifications_Domain_Model_CertificateType
+     * @var CertificateType
      */
     protected $certificateType;
 
     /**
      * Returns the certificationDate
      *
-     * @return DateTime $certificationDate
+     * @return \DateTime $certificationDate
      */
     public function getCertificationDate()
     {
@@ -64,7 +68,7 @@ class Tx_Certifications_Domain_Model_Certificate extends Tx_Extbase_DomainObject
     /**
      * Sets the certificationDate
      *
-     * @param DateTime $certificationDate
+     * @param \DateTime $certificationDate
      * @return void
      */
     public function setCertificationDate($certificationDate)
@@ -75,7 +79,7 @@ class Tx_Certifications_Domain_Model_Certificate extends Tx_Extbase_DomainObject
     /**
      * Returns the expirationDate
      *
-     * @return DateTime $expirationDate
+     * @return \DateTime $expirationDate
      */
     public function getExpirationDate()
     {
@@ -85,7 +89,7 @@ class Tx_Certifications_Domain_Model_Certificate extends Tx_Extbase_DomainObject
     /**
      * Sets the expirationDate
      *
-     * @param DateTime $expirationDate
+     * @param \DateTime $expirationDate
      * @return void
      */
     public function setExpirationDate($expirationDate)
@@ -158,7 +162,7 @@ class Tx_Certifications_Domain_Model_Certificate extends Tx_Extbase_DomainObject
     /**
      * Returns the certificateType
      *
-     * @return Tx_Certifications_Domain_Model_CertificateType $certificateType
+     * @return CertificateType $certificateType
      */
     public function getCertificateType()
     {
@@ -168,10 +172,10 @@ class Tx_Certifications_Domain_Model_Certificate extends Tx_Extbase_DomainObject
     /**
      * Sets the certificateType
      *
-     * @param Tx_Certifications_Domain_Model_CertificateType $certificateType
+     * @param CertificateType $certificateType
      * @return void
      */
-    public function setCertificateType(Tx_Certifications_Domain_Model_CertificateType $certificateType)
+    public function setCertificateType(CertificateType $certificateType)
     {
         $this->certificateType = $certificateType;
     }

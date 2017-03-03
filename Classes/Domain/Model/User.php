@@ -1,4 +1,5 @@
 <?php
+namespace T3o\Certifications\Domain\Model;
 
 /**
  * This file is part of the TYPO3 CMS project.
@@ -12,7 +13,11 @@
  *
  * The TYPO3 project - inspiring people to share!
  */
-class Tx_Certifications_Domain_Model_User extends Tx_Extbase_DomainObject_AbstractEntity
+
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+
+class User extends AbstractEntity
 {
 
 
@@ -60,7 +65,7 @@ class Tx_Certifications_Domain_Model_User extends Tx_Extbase_DomainObject_Abstra
     /**
      * certificates
      *
-     * @var Tx_Extbase_Persistence_ObjectStorage<Tx_Certifications_Domain_Model_Certificate>
+     * @var ObjectStorage<Certificate>
      * @lazy
      */
     protected $certificates;
@@ -68,7 +73,7 @@ class Tx_Certifications_Domain_Model_User extends Tx_Extbase_DomainObject_Abstra
     /**
      * feUser
      *
-     * @var Tx_T3oAjaxlogin_Domain_Model_User
+     * @var User
      */
     protected $feUser;
 
@@ -174,16 +179,16 @@ class Tx_Certifications_Domain_Model_User extends Tx_Extbase_DomainObject_Abstra
          * It will be rewritten on each save in the extension builder
          * You may modify the constructor of this class instead
          */
-        $this->certificates = new Tx_Extbase_Persistence_ObjectStorage();
+        $this->certificates = new ObjectStorage();
     }
 
     /**
      * Adds a Certificate
      *
-     * @param Tx_Certifications_Domain_Model_Certificate $certificate
+     * @param Certificate $certificate
      * @return void
      */
-    public function addCertificate(Tx_Certifications_Domain_Model_Certificate $certificate)
+    public function addCertificate(Certificate $certificate)
     {
         $this->certificates->attach($certificate);
     }
@@ -191,10 +196,10 @@ class Tx_Certifications_Domain_Model_User extends Tx_Extbase_DomainObject_Abstra
     /**
      * Removes a Certificate
      *
-     * @param Tx_Certifications_Domain_Model_Certificate $certificateToRemove The Certificate to be removed
+     * @param Certificate $certificateToRemove The Certificate to be removed
      * @return void
      */
-    public function removeCertificate(Tx_Certifications_Domain_Model_Certificate $certificateToRemove)
+    public function removeCertificate(Certificate $certificateToRemove)
     {
         $this->certificates->detach($certificateToRemove);
     }
@@ -202,7 +207,7 @@ class Tx_Certifications_Domain_Model_User extends Tx_Extbase_DomainObject_Abstra
     /**
      * Returns the certificates
      *
-     * @return Tx_Extbase_Persistence_ObjectStorage<Tx_Certifications_Domain_Model_Certificate> $certificates
+     * @return ObjectStorage<Certificate> $certificates
      */
     public function getCertificates()
     {
@@ -212,10 +217,10 @@ class Tx_Certifications_Domain_Model_User extends Tx_Extbase_DomainObject_Abstra
     /**
      * Sets the certificates
      *
-     * @param Tx_Extbase_Persistence_ObjectStorage <Tx_Certifications_Domain_Model_Certificate> $certificates
+     * @param ObjectStorage<Certificate> $certificates
      * @return void
      */
-    public function setCertificates(Tx_Extbase_Persistence_ObjectStorage $certificates)
+    public function setCertificates(ObjectStorage $certificates)
     {
         $this->certificates = $certificates;
     }
@@ -224,7 +229,7 @@ class Tx_Certifications_Domain_Model_User extends Tx_Extbase_DomainObject_Abstra
      * getFeUser
      * Returns the linked frontend user
      *
-     * @return Tx_T3oAjaxlogin_Domain_Model_User $feUser
+     * @return User $feUser
      */
     public function getFeUser()
     {
@@ -235,7 +240,7 @@ class Tx_Certifications_Domain_Model_User extends Tx_Extbase_DomainObject_Abstra
      * setFeUser
      * Sets the frontend user
      *
-     * @param Tx_T3oAjaxlogin_Domain_Model_User $feUser
+     * @param User $feUser
      * @return void
      */
     public function setFeUser($feUser)
@@ -321,7 +326,7 @@ class Tx_Certifications_Domain_Model_User extends Tx_Extbase_DomainObject_Abstra
      * Returns TRUE if there is at least either a public
      * email adress or a public twitter handle
      *
-     * @return void
+     * @return bool
      */
     public function isPublicInformationAvailable()
     {
@@ -349,7 +354,7 @@ class Tx_Certifications_Domain_Model_User extends Tx_Extbase_DomainObject_Abstra
      * isPublicTwitter
      * Return the boolean state of publicTwitter
      *
-     * @return void
+     * @return bool
      */
     public function isPublicTwitter()
     {

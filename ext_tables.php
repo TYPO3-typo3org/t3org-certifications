@@ -3,21 +3,21 @@ if (!defined('TYPO3_MODE')) {
     die ('Access denied.');
 }
 
-Tx_Extbase_Utility_Extension::registerPlugin(
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     $_EXTKEY,
     'Certlist',
     'Certification List'
 );
 
-t3lib_extMgm::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Certifications');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Certifications');
 
 $TCA['tt_content']['types']['list']['subtypes_addlist']['certifications_certlist'] = 'pi_flexform';
 
-t3lib_extMgm::addPiFlexFormValue('certifications_certlist', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/Certlist.xml');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('certifications_certlist', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/Certlist.xml');
 
 
-t3lib_extMgm::addLLrefForTCAdescr('tx_certifications_domain_model_certificate', 'EXT:certifications/Resources/Private/Language/locallang_csh_tx_certifications_domain_model_certificate.xml');
-t3lib_extMgm::allowTableOnStandardPages('tx_certifications_domain_model_certificate');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_certifications_domain_model_certificate', 'EXT:certifications/Resources/Private/Language/locallang_csh_tx_certifications_domain_model_certificate.xml');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_certifications_domain_model_certificate');
 $TCA['tx_certifications_domain_model_certificate'] = [
     'ctrl' => [
         'title' => 'LLL:EXT:certifications/Resources/Private/Language/locallang_db.xml:tx_certifications_domain_model_certificate',
@@ -40,13 +40,13 @@ $TCA['tx_certifications_domain_model_certificate'] = [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'certification_date,allow_listing,certificate_type,',
-        'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/Certificate.php',
-        'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_certifications_domain_model_certificate.gif'
+        'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Certificate.php',
+        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_certifications_domain_model_certificate.gif'
     ],
 ];
 
-t3lib_extMgm::addLLrefForTCAdescr('tx_certifications_domain_model_certificatetype', 'EXT:certifications/Resources/Private/Language/locallang_csh_tx_certifications_domain_model_certificatetype.xml');
-t3lib_extMgm::allowTableOnStandardPages('tx_certifications_domain_model_certificatetype');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_certifications_domain_model_certificatetype', 'EXT:certifications/Resources/Private/Language/locallang_csh_tx_certifications_domain_model_certificatetype.xml');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_certifications_domain_model_certificatetype');
 $TCA['tx_certifications_domain_model_certificatetype'] = [
     'ctrl' => [
         'title' => 'LLL:EXT:certifications/Resources/Private/Language/locallang_db.xml:tx_certifications_domain_model_certificatetype',
@@ -69,13 +69,13 @@ $TCA['tx_certifications_domain_model_certificatetype'] = [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'title,',
-        'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/CertificateType.php',
-        'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_certifications_domain_model_certificatetype.gif'
+        'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/CertificateType.php',
+        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_certifications_domain_model_certificatetype.gif'
     ],
 ];
 
-t3lib_extMgm::addLLrefForTCAdescr('tx_certifications_domain_model_user', 'EXT:certifications/Resources/Private/Language/locallang_csh_tx_certifications_domain_model_user.xml');
-t3lib_extMgm::allowTableOnStandardPages('tx_certifications_domain_model_user');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_certifications_domain_model_user', 'EXT:certifications/Resources/Private/Language/locallang_csh_tx_certifications_domain_model_user.xml');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_certifications_domain_model_user');
 $TCA['tx_certifications_domain_model_user'] = [
     'ctrl' => [
         'title' => 'LLL:EXT:certifications/Resources/Private/Language/locallang_db.xml:tx_certifications_domain_model_user',
@@ -90,8 +90,8 @@ $TCA['tx_certifications_domain_model_user'] = [
             'disabled' => 'disable',
         ],
         'searchFields' => 'first_name,last_name,email,twitter',
-        'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/User.php',
-        'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_certifications_domain_model_user.gif'
+        'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/User.php',
+        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_certifications_domain_model_user.gif'
     ],
 ];
 

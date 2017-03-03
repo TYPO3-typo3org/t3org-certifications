@@ -1,4 +1,5 @@
 <?php
+namespace T3o\Certifications\Domain\Repository;
 
 /**
  * This file is part of the TYPO3 CMS project.
@@ -12,19 +13,24 @@
  *
  * The TYPO3 project - inspiring people to share!
  */
-class Tx_Certifications_Domain_Repository_UserRepository extends Tx_Extbase_Persistence_Repository
+
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
+use TYPO3\CMS\Extbase\Persistence\Repository;
+
+class UserRepository extends Repository
 {
 
     /**
-     * @return array|Tx_Extbase_Persistence_QueryResultInterface
+     * @return array|QueryResultInterface
      */
     public function findAll()
     {
         $query = $this->createQuery();
         $query->setOrderings([
-            'last_name' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING,
-            'first_name' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING,
-            'country' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING
+            'last_name' => QueryInterface::ORDER_ASCENDING,
+            'first_name' => QueryInterface::ORDER_ASCENDING,
+            'country' => QueryInterface::ORDER_ASCENDING
         ]);
         $return = $query->execute();
         return $return;
@@ -34,7 +40,7 @@ class Tx_Certifications_Domain_Repository_UserRepository extends Tx_Extbase_Pers
      * findByFistChar
      *
      * @param string $char
-     * @return Tx_Extbase_Query_Result
+     * @return QueryResultInterface
      */
     public function findByFirstChar($char = 'A')
     {
@@ -42,8 +48,8 @@ class Tx_Certifications_Domain_Repository_UserRepository extends Tx_Extbase_Pers
         $query = $this->createQuery();
         $query->setOrderings(
             [
-                'last_name' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING,
-                'first_name' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING
+                'last_name' => QueryInterface::ORDER_ASCENDING,
+                'first_name' => QueryInterface::ORDER_ASCENDING
             ]
         );
         if ($char !== '#') {
@@ -70,7 +76,7 @@ class Tx_Certifications_Domain_Repository_UserRepository extends Tx_Extbase_Pers
     /**
      * @param $sortby
      * @param $sorting
-     * @return array|Tx_Extbase_Persistence_QueryResultInterface
+     * @return array|QueryResultInterface
      */
     public function findBySortBy($sortby, $sorting)
     {
@@ -79,33 +85,33 @@ class Tx_Certifications_Domain_Repository_UserRepository extends Tx_Extbase_Pers
         if ($sortby === 'country') {
             if ($sorting === 'asc') {
                 $query->setOrderings([
-                    'country' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING,
-                    'last_name' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING,
-                    'first_name' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING,
-                    'certificates' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING
+                    'country' => QueryInterface::ORDER_ASCENDING,
+                    'last_name' => QueryInterface::ORDER_ASCENDING,
+                    'first_name' => QueryInterface::ORDER_ASCENDING,
+                    'certificates' => QueryInterface::ORDER_ASCENDING
                 ]);
             } elseif ($sorting === 'desc') {
                 $query->setOrderings([
-                    'country' => Tx_Extbase_Persistence_QueryInterface::ORDER_DESCENDING,
-                    'last_name' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING,
-                    'first_name' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING,
-                    'certificates' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING
+                    'country' => QueryInterface::ORDER_DESCENDING,
+                    'last_name' => QueryInterface::ORDER_ASCENDING,
+                    'first_name' => QueryInterface::ORDER_ASCENDING,
+                    'certificates' => QueryInterface::ORDER_ASCENDING
                 ]);
             }
         } elseif ($sortby === 'certificate') {
             if ($sorting === 'asc') {
                 $query->setOrderings([
-                    'certificates' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING,
-                    'last_name' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING,
-                    'first_name' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING,
-                    'country' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING
+                    'certificates' => QueryInterface::ORDER_ASCENDING,
+                    'last_name' => QueryInterface::ORDER_ASCENDING,
+                    'first_name' => QueryInterface::ORDER_ASCENDING,
+                    'country' => QueryInterface::ORDER_ASCENDING
                 ]);
             } elseif ($sorting === 'desc') {
                 $query->setOrderings([
-                    'certificates' => Tx_Extbase_Persistence_QueryInterface::ORDER_DESCENDING,
-                    'last_name' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING,
-                    'first_name' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING,
-                    'country' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING
+                    'certificates' => QueryInterface::ORDER_DESCENDING,
+                    'last_name' => QueryInterface::ORDER_ASCENDING,
+                    'first_name' => QueryInterface::ORDER_ASCENDING,
+                    'country' => QueryInterface::ORDER_ASCENDING
                 ]);
             }
         }

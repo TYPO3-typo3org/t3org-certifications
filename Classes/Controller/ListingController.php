@@ -1,4 +1,5 @@
 <?php
+namespace T3o\Certifications\Controller;
 
 /**
  * This file is part of the TYPO3 CMS project.
@@ -12,13 +13,18 @@
  *
  * The TYPO3 project - inspiring people to share!
  */
-class Tx_Certifications_Controller_ListingController extends Tx_Extbase_MVC_Controller_ActionController
+
+use T3o\Certifications\Domain\Model\User;
+use T3o\Certifications\Domain\Repository\UserRepository;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+
+class ListingController extends ActionController
 {
 
     /**
      * feUsersRepository
      *
-     * @var Tx_Certifications_Domain_Repository_UserRepository
+     * @var UserRepository
      */
     protected $userRepository;
 
@@ -48,10 +54,10 @@ class Tx_Certifications_Controller_ListingController extends Tx_Extbase_MVC_Cont
     /**
      * action show
      *
-     * @param Tx_Certifications_Domain_Model_User $user
+     * @param User $user
      * @return void
      */
-    public function showAction(Tx_Certifications_Domain_Model_User $user)
+    public function showAction(User $user)
     {
         $this->view->assign('certUser', $user);
     }
@@ -59,10 +65,10 @@ class Tx_Certifications_Controller_ListingController extends Tx_Extbase_MVC_Cont
     /**
      * injectFeUsersRepository
      *
-     * @param Tx_Certifications_Domain_Repository_UserRepository $userRepository
+     * @param UserRepository $userRepository
      * @return void
      */
-    public function injectFeUsersRepository(Tx_Certifications_Domain_Repository_UserRepository $userRepository)
+    public function injectFeUsersRepository(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
     }
