@@ -25,8 +25,7 @@ return [
     ],
     'feInterface' => 'first_name, middle_name, last_name, country, email',
     'types' => [
-        '0' => ['showitem' => '--div--;foobar, disable,first_name,middle_name,last_name,country,'
-            . '--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:fe_users.tabs.access, starttime, endtime,'
+        '0' => ['showitem' => 'disable,first_name,middle_name,last_name,country,'
             . '--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:fe_users.tabs.extended,email,public_email_address,twitter,public_twitter,cert_reason,certificates,fe_user']
     ],
     'palettes' => [
@@ -88,31 +87,6 @@ return [
             'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.disable',
             'config' => [
                 'type' => 'check'
-            ]
-        ],
-        'starttime' => [
-            'exclude' => 1,
-            'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
-            'config' => [
-                'type' => 'input',
-                'size' => '8',
-                'max' => '20',
-                'eval' => 'date',
-                'default' => '0',
-            ]
-        ],
-        'endtime' => [
-            'exclude' => 1,
-            'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
-            'config' => [
-                'type' => 'input',
-                'size' => '8',
-                'max' => '20',
-                'eval' => 'date',
-                'default' => '0',
-                'range' => [
-                    'upper' => mktime(0, 0, 0, 12, 31, 2020),
-                ]
             ]
         ],
         'cert_reason' => [
