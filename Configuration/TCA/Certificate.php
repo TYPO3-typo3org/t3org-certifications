@@ -4,7 +4,30 @@ if (!defined('TYPO3_MODE')) {
 }
 
 $TCA['tx_certifications_domain_model_certificate'] = [
-    'ctrl' => $TCA['tx_certifications_domain_model_certificate']['ctrl'],
+    'ctrl' => [
+        'title' => 'LLL:EXT:certifications/Resources/Private/Language/locallang_db.xml:tx_certifications_domain_model_certificate',
+        'label' => 'certification_date',
+        'tstamp' => 'tstamp',
+        'crdate' => 'crdate',
+        'cruser_id' => 'cruser_id',
+        'dividers2tabs' => TRUE,
+
+        'versioningWS' => 2,
+        'versioning_followPages' => TRUE,
+        'origUid' => 't3_origuid',
+        'languageField' => 'sys_language_uid',
+        'transOrigPointerField' => 'l10n_parent',
+        'transOrigDiffSourceField' => 'l10n_diffsource',
+        'delete' => 'deleted',
+        'enablecolumns' => [
+            'disabled' => 'hidden',
+            'starttime' => 'starttime',
+            'endtime' => 'endtime',
+        ],
+        'searchFields' => 'certification_date,allow_listing,certificate_type,',
+        'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('certifications') . 'Configuration/TCA/Certificate.php',
+        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('certifications') . 'Resources/Public/Icons/tx_certifications_domain_model_certificate.gif'
+    ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, certification_date, expiration_date, allow_listing, version_four, certificate_type',
     ],

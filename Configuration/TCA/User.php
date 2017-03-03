@@ -4,7 +4,22 @@ if (!defined('TYPO3_MODE')) {
 }
 
 $TCA['tx_certifications_domain_model_user'] = [
-    'ctrl' => $TCA['tx_certifications_domain_model_user']['ctrl'],
+    'ctrl' => [
+        'title' => 'LLL:EXT:certifications/Resources/Private/Language/locallang_db.xml:tx_certifications_domain_model_user',
+        'label' => 'email',
+        'tstamp' => 'tstamp',
+        'crdate' => 'crdate',
+        'cruser_id' => 'cruser_id',
+        'dividers2tabs' => TRUE,
+
+        'delete' => 'deleted',
+        'enablecolumns' => [
+            'disabled' => 'disable',
+        ],
+        'searchFields' => 'first_name,last_name,email,twitter',
+        'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('certifications') . 'Configuration/TCA/User.php',
+        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('certifications') . 'Resources/Public/Icons/tx_certifications_domain_model_user.gif'
+    ],
     'interface' => [
         'showRecordFieldList' => 'first_name, middle_name, last_name, country, email',
     ],
