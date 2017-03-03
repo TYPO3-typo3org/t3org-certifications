@@ -3,7 +3,7 @@ if (!defined('TYPO3_MODE')) {
     die ('Access denied.');
 }
 
-$TCA['tx_certifications_domain_model_user'] = [
+return [
     'ctrl' => [
         'title' => 'LLL:EXT:certifications/Resources/Private/Language/locallang_db.xml:tx_certifications_domain_model_user',
         'label' => 'email',

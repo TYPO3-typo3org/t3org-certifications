@@ -3,10 +3,10 @@ if (!defined('TYPO3_MODE')) {
     die ('Access denied.');
 }
 
-$TCA['tx_certifications_domain_model_certificatetype'] = [
+return [
     'ctrl' => [
-        'title' => 'LLL:EXT:certifications/Resources/Private/Language/locallang_db.xml:tx_certifications_domain_model_certificatetype',
-        'label' => 'title',
+        'title' => 'LLL:EXT:certifications/Resources/Private/Language/locallang_db.xml:tx_certifications_domain_model_certificate',
+        'label' => 'certification_date',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -24,15 +24,15 @@ $TCA['tx_certifications_domain_model_certificatetype'] = [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'title,',
-        'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('certifications') . 'Configuration/TCA/CertificateType.php',
-        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('certifications') . 'Resources/Public/Icons/tx_certifications_domain_model_certificatetype.gif'
+        'searchFields' => 'certification_date,allow_listing,certificate_type,',
+        'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('certifications') . 'Configuration/TCA/Certificate.php',
+        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('certifications') . 'Resources/Public/Icons/tx_certifications_domain_model_certificate.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, certification_date, expiration_date, allow_listing, version_four, certificate_type',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, certification_date, expiration_date, allow_listing, version_four, certificate_type,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'],
     ],
     'palettes' => [
         '1' => ['showitem' => ''],
@@ -60,8 +60,8 @@ $TCA['tx_certifications_domain_model_certificatetype'] = [
                 'items' => [
                     ['', 0],
                 ],
-                'foreign_table' => 'tx_certifications_domain_model_certificatetype',
-                'foreign_table_where' => 'AND tx_certifications_domain_model_certificatetype.pid=###CURRENT_PID### AND tx_certifications_domain_model_certificatetype.sys_language_uid IN (-1,0)',
+                'foreign_table' => 'tx_certifications_domain_model_certificate',
+                'foreign_table_where' => 'AND tx_certifications_domain_model_certificate.pid=###CURRENT_PID### AND tx_certifications_domain_model_certificate.sys_language_uid IN (-1,0)',
             ],
         ],
         'l10n_diffsource' => [
@@ -116,13 +116,64 @@ $TCA['tx_certifications_domain_model_certificatetype'] = [
                 ],
             ],
         ],
-        'title' => [
+        'certification_date' => [
             'exclude' => 0,
-            'label' => 'LLL:EXT:certifications/Resources/Private/Language/locallang_db.xml:tx_certifications_domain_model_certificatetype.title',
+            'label' => 'LLL:EXT:certifications/Resources/Private/Language/locallang_db.xml:tx_certifications_domain_model_certificate.certification_date',
             'config' => [
                 'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
+                'size' => 7,
+                'eval' => 'date,required',
+                'checkbox' => 1,
+                'default' => time()
+            ],
+        ],
+        'expiration_date' => [
+            'exclude' => 0,
+            'label' => 'LLL:EXT:certifications/Resources/Private/Language/locallang_db.xml:tx_certifications_domain_model_certificate.expiration_date',
+            'config' => [
+                'type' => 'input',
+                'size' => 7,
+                'eval' => 'date',
+                'checkbox' => 1,
+                'default' => 0
+            ]
+        ],
+        'allow_listing' => [
+            'exclude' => 0,
+            'label' => 'LLL:EXT:certifications/Resources/Private/Language/locallang_db.xml:tx_certifications_domain_model_certificate.allow_listing',
+            'config' => [
+                'type' => 'check',
+                'default' => 1
+            ],
+        ],
+        'version_four' => [
+            'exclude' => 0,
+            'label' => 'LLL:EXT:certifications/Resources/Private/Language/locallang_db.xml:tx_certifications_domain_model_certificate.version_four',
+            'config' => [
+                'type' => 'check',
+                'default' => 0
+            ],
+        ],
+        'certificate_type' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:certifications/Resources/Private/Language/locallang_db.xml:tx_certifications_domain_model_certificate.certificate_type',
+            'config' => [
+                'type' => 'select',
+                'foreign_table' => 'tx_certifications_domain_model_certificatetype',
+                'minitems' => 0,
+                'maxitems' => 1,
+                'wizards' => [
+                    '_PADDING' => 5,
+                    '_VERTICAL' => 0,
+                    'suggest' => [
+                        'type' => 'suggest'
+                    ],
+                ]
+            ],
+        ],
+        'user' => [
+            'config' => [
+                'type' => 'passthrough',
             ],
         ],
     ],
