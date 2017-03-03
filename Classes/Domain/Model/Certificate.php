@@ -51,7 +51,7 @@ class Certificate extends AbstractEntity
     /**
      * certificateType
      *
-     * @var CertificateType
+     * @var \T3o\Certifications\Domain\Model\CertificateType
      */
     protected $certificateType;
 

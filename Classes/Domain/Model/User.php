@@ -14,6 +14,7 @@ namespace T3o\Certifications\Domain\Model;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
@@ -65,7 +66,7 @@ class User extends AbstractEntity
     /**
      * certificates
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<Certificate>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\T3o\Certifications\Domain\Model\Certificate>
      * @lazy
      */
     protected $certificates;
@@ -73,7 +74,7 @@ class User extends AbstractEntity
     /**
      * feUser
      *
-     * @var User
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
      */
     protected $feUser;
 
