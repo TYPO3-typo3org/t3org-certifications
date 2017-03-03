@@ -60,11 +60,9 @@
                                                             key="tx_certifications_domain_model_user.no_expiration"/>
                                                 </f:then>
                                                 <f:else>
-                                                    <f:format.date format="d.m.Y">{certificate.certificationDate}
-                                                    </f:format.date>
+                                                    <f:format.date format="d.m.Y" date="{certificate.certificationDate}" />
                                                     -
-                                                    <f:format.date format="d.m.Y">{certificate.expirationDate}
-                                                    </f:format.date>
+                                                    <f:format.date format="d.m.Y" date="{certificate.expirationDate}" />
                                                 </f:else>
                                             </f:if>
                                         </li>
