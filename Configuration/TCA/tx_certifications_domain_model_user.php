@@ -25,11 +25,9 @@ return [
     ],
     'feInterface' => 'first_name, middle_name, last_name, country, email',
     'types' => [
-        '0' => ['showitem' => '
-			disable,first_name,middle_name,last_name,country,
-			--div--;LLL:EXT:cms/locallang_tca.xml:fe_users.tabs.access, starttime, endtime,
-			--div--;LLL:EXT:cms/locallang_tca.xml:fe_users.tabs.extended,email,public_email_address,twitter,public_twitter,cert_reason,certificates,fe_user
-		']
+        '0' => ['showitem' => '--div--;foobar, disable,first_name,middle_name,last_name,country,'
+            . '--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:fe_users.tabs.access, starttime, endtime,'
+            . '--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:fe_users.tabs.extended,email,public_email_address,twitter,public_twitter,cert_reason,certificates,fe_user']
     ],
     'palettes' => [
         '2' => ['showitem' => 'first_name,--linebreak--,middle_name,--linebreak--,last_name']
