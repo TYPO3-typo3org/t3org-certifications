@@ -1,0 +1,7 @@
+{
+    "name": "t3o/certifications",
+    "description": "Certifications list for typo3.org",
+    "type": "typo3-cms-extension",
+    "license": "GPL-2.0+",
+    "require": {}
+}
