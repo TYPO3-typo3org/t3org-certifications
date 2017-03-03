@@ -65,7 +65,7 @@ class User extends AbstractEntity
     /**
      * certificates
      *
-     * @var ObjectStorage<Certificate>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<Certificate>
      * @lazy
      */
     protected $certificates;
